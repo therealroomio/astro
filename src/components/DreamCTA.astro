@@ -1,0 +1,56 @@
+---
+import { Image } from "astro:assets";
+import dreamBg from "../assets/dream.jpg";
+import BlurFade from "./magicui/blur-fade";
+---
+
+<section id="contact" class="relative min-h-screen">
+	{/* Background Image with Overlay */}
+	<div class="absolute inset-0">
+		<Image
+			src={dreamBg}
+			alt="Luxury interior background"
+			class="h-full w-full object-cover"
+			quality="max"
+			format="webp"
+		/>
+		<div class="absolute inset-0 bg-gradient-to-br from-[#006B5A]/40 via-black/80 to-black/80"></div>
+		<div class="absolute inset-0 backdrop-blur-[2px]"></div>
+	</div>
+
+	{/* Content */}
+	<div class="relative flex min-h-screen items-center">
+		<div class="mx-auto w-full max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
+			<div class="grid gap-12 lg:grid-cols-2">
+				<BlurFade client:load inView>
+					<h1 class="text-5xl font-bold leading-tight text-white drop-shadow-sm sm:text-6xl lg:text-7xl">
+						Unlock Your Dream Home Today!
+					</h1>
+				</BlurFade>
+
+				<div class="flex flex-col justify-center">
+					<BlurFade client:load delay={0.1} inView>
+						<p class="mb-8 text-lg text-white/90 drop-shadow-sm">
+							We encourage clients to actively participate in discussions, share their ideas, preferences, and feedback.
+						</p>
+
+						<div class="flex flex-col gap-4 sm:flex-row">
+							<a
+								href="/contact"
+								class="inline-flex items-center justify-center rounded-full bg-primary px-6 py-3 text-base font-medium text-white shadow-lg transition-all hover:bg-[#006B5A]/90 hover:shadow-xl hover:scale-[1.02]"
+							>
+								Get in touch →
+							</a>
+							<a
+								href="tel:+14839449540"
+								class="inline-flex items-center justify-center rounded-full border border-white/20 bg-white/10 px-6 py-3 text-base font-medium text-white shadow-lg backdrop-blur-sm transition-all hover:bg-white/20 hover:shadow-xl hover:scale-[1.02]"
+							>
+								Call us: +1 483 944 954
+							</a>
+						</div>
+					</BlurFade>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
