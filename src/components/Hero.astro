@@ -1,0 +1,137 @@
+---
+import { Image } from "astro:assets";
+import heroBg from "../assets/hero-bg.jpg";
+import BlurFade from "./magicui/blur-fade";
+---
+
+<section class="relative flex min-h-[90vh] items-center justify-center overflow-hidden">
+	{/* Background Image with Overlay */}
+	<div class="absolute inset-0 z-0">
+		<Image
+			src={heroBg}
+			alt="Luxury interior background"
+			class="h-full w-full object-cover"
+			quality="max"
+			format="webp"
+		/>
+		<div
+			class="absolute inset-0 bg-gradient-to-r from-background/95 via-background/80 to-background/40"
+		>
+		</div>
+	</div>
+
+	{/* Content */}
+	<div class="sm:-mx-auto relative z-10 mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
+		<div class="max-w-[640px]">
+			<BlurFade client:load>
+				<div class="inline-block">
+					<span
+						class="mb-6 inline-flex items-center rounded-full bg-primary/10 px-6 py-2 text-sm font-medium text-primary"
+					>
+						Welcome to Gulf Builders
+					</span>
+				</div></BlurFade
+			>
+
+			<h1 class="text-5xl font-bold tracking-tight text-foreground md:text-6xl lg:text-7xl">
+				<BlurFade delay={0.15} client:load>
+					<span class="block">From Concept</span>
+				</BlurFade>
+				<BlurFade delay={0.15 * 2} client:load>
+					<span class="mt-1 block text-primary">To Reality</span>
+				</BlurFade>
+			</h1>
+
+			<BlurFade delay={0.15 * 3} client:load>
+				<p class="mt-8 max-w-xl text-lg text-muted-foreground md:text-xl">
+					<p>
+						Luxury residential and commercial construction across the Greater Toronto Area. From
+						custom homes to office spaces, we handle everything—including expedited permits.
+					</p>
+				</p>
+			</BlurFade>
+
+			<div class="mt-10 flex flex-wrap gap-4">
+				<BlurFade delay={0.15 * 4} client:load>
+					<a
+						href="#projects"
+						class="inline-flex items-center justify-center rounded-full bg-primary px-8 py-3 font-medium text-white transition-colors hover:bg-primary/90"
+					>
+						View Our Work
+					</a>
+				</BlurFade>
+				<BlurFade delay={0.15 * 5} client:load>
+					<a
+						href="#contact"
+						class="inline-flex items-center justify-center rounded-full border border-primary/20 bg-white/10 px-8 py-3 font-medium text-foreground backdrop-blur-sm transition-colors hover:bg-primary/10"
+					>
+						Get in Touch
+					</a>
+				</BlurFade>
+			</div>
+
+			{/* Features Grid */}
+			<div class="mt-16 grid grid-cols-2 gap-6 md:grid-cols-3">
+				<BlurFade delay={0.15 * 6} client:load>
+					<div class="flex items-center space-x-2">
+						<div class="flex h-12 w-12 items-center justify-center rounded-full bg-primary/10">
+							<svg
+								xmlns="http://www.w3.org/2000/svg"
+								class="h-6 w-6 text-primary"
+								fill="none"
+								viewBox="0 0 24 24"
+								stroke="currentColor"
+							>
+								<path
+									stroke-linecap="round"
+									stroke-linejoin="round"
+									stroke-width="2"
+									d="M5 13l4 4L19 7"></path>
+							</svg>
+						</div>
+						<span class="text-sm font-medium text-foreground">Full-Service Design</span>
+					</div>
+				</BlurFade>
+				<BlurFade delay={0.15 * 7} client:load>
+					<div class="flex items-center space-x-2">
+						<div class="flex h-12 w-12 items-center justify-center rounded-full bg-primary/10">
+							<svg
+								xmlns="http://www.w3.org/2000/svg"
+								class="h-6 w-6 text-primary"
+							fill="none"
+							viewBox="0 0 24 24"
+							stroke="currentColor"
+						>
+							<path
+								stroke-linecap="round"
+								stroke-linejoin="round"
+								stroke-width="2"
+								d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+						</svg>
+					</div>
+					<span class="text-sm font-medium text-foreground">Expedited Permits</span>
+				</div></BlurFade>
+				<BlurFade delay={0.15 * 8} client:load>
+					<div class="flex items-center space-x-2">
+						<div class="flex h-12 w-12 items-center justify-center rounded-full bg-primary/10">
+							<svg
+								xmlns="http://www.w3.org/2000/svg"
+								class="h-6 w-6 text-primary"
+							fill="none"
+							viewBox="0 0 24 24"
+							stroke="currentColor"
+						>
+							<path
+								stroke-linecap="round"
+								stroke-linejoin="round"
+								stroke-width="2"
+								d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
+							></path>
+						</svg>
+					</div>
+					<span class="text-sm font-medium text-foreground">Top Craftsmanship</span>
+				</div></BlurFade>
+			</div>
+		</div>
+	</div>
+</section>
