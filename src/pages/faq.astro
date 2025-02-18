@@ -1,0 +1,202 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Navbar from "../components/Navbar.astro";
+import Footer from "../components/Footer.astro";
+import BlurFade from "../components/magicui/blur-fade";
+import Accordion from "../components/ui/Accordion";
+
+// SEO metadata
+const title = "Frequently Asked Questions | Gulf Builders";
+const description =
+  "Find answers to common questions about our construction services, project timelines, pricing, and building process. Gulf Builders is committed to transparency and excellence in every project.";
+const keywords =
+  "construction FAQ, building questions, home renovation FAQ, construction timeline, building costs, construction process, Gulf Builders FAQ";
+
+// FAQ Categories with questions and answers
+const faqCategories = [
+  {
+    title: "General Questions",
+    icon: "M12 6v6m0 0v6m0-6h6m-6 0H6",
+    questions: [
+      {
+        q: "What types of construction projects do you handle?",
+        a: "We specialize in a wide range of construction projects including residential homes, commercial buildings, industrial facilities, and renovation projects. Our expertise spans from luxury custom homes to large-scale commercial developments.",
+      },
+      {
+        q: "How long has Gulf Builders been in business?",
+        a: "Gulf Builders has been delivering excellence in construction for over 15 years. Our team brings decades of combined experience in construction, architecture, and project management.",
+      },
+      {
+        q: "Are you licensed and insured?",
+        a: "Yes, we are fully licensed, bonded, and insured. We maintain comprehensive coverage to protect our clients and projects, ensuring peace of mind throughout the construction process.",
+      },
+    ],
+  },
+  {
+    title: "Project Planning & Timeline",
+    icon: "M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z",
+    questions: [
+      {
+        q: "How long does a typical construction project take?",
+        a: "Project timelines vary based on scope and complexity. A typical custom home might take 8-12 months, while commercial projects can range from 6-24 months. We provide detailed timelines during the planning phase.",
+      },
+      {
+        q: "What is your project planning process?",
+        a: "Our process begins with an initial consultation, followed by design development, detailed cost estimation, and project scheduling. We ensure all stakeholders are aligned before breaking ground.",
+      },
+      {
+        q: "Do you handle all necessary permits and approvals?",
+        a: "Yes, we manage all aspects of the permitting process, including building permits, zoning approvals, and environmental clearances. Our team has extensive experience navigating local regulations.",
+      },
+    ],
+  },
+  {
+    title: "Costs & Financing",
+    icon: "M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z",
+    questions: [
+      {
+        q: "How do you determine project costs?",
+        a: "We provide detailed cost estimates based on project specifications, materials, labor, and timeline. Our transparent pricing process ensures no hidden costs or surprises.",
+      },
+      {
+        q: "Do you offer financing options?",
+        a: "While we don't provide direct financing, we work with several trusted financial institutions and can recommend options suitable for your project needs.",
+      },
+      {
+        q: "What payment schedule do you follow?",
+        a: "We typically structure payments in milestones based on project progress. This ensures fair payment terms while maintaining steady project momentum.",
+      },
+    ],
+  },
+  {
+    title: "Quality & Warranty",
+    icon: "M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z",
+    questions: [
+      {
+        q: "What quality control measures do you have in place?",
+        a: "We maintain rigorous quality control standards, including regular inspections, material testing, and third-party verifications. Our project managers oversee every aspect of construction.",
+      },
+      {
+        q: "Do you offer warranties on your work?",
+        a: "Yes, we provide comprehensive warranties on all our work. This includes a 1-year warranty on workmanship and pass-through warranties on materials and systems from manufacturers.",
+      },
+      {
+        q: "How do you handle post-construction support?",
+        a: "We provide dedicated post-construction support, including maintenance guidance, warranty service, and rapid response to any concerns that may arise after project completion.",
+      },
+    ],
+  },
+];
+---
+
+<Layout>
+  <head>
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="keywords" content={keywords} />
+    <!-- Open Graph / Social Media Meta Tags -->
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+  </head>
+
+  <Navbar />
+  <main class="relative min-h-screen">
+    <!-- Elegant Background -->
+    <div class="absolute inset-0 -z-10">
+      <div
+        class="absolute inset-0 bg-[radial-gradient(circle_at_top,_var(--tw-gradient-stops))] from-gray-100 via-white to-white opacity-60"
+      >
+      </div>
+      <div class="absolute inset-0 bg-[url('/noise.png')] opacity-[0.015] mix-blend-overlay"></div>
+    </div>
+
+    <div class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
+      <!-- FAQ Header -->
+      <BlurFade client:load delay={0.2}>
+        <div class="my-32 text-center">
+          <h1
+            class="bg-gradient-to-r from-gray-900 to-gray-600 bg-clip-text text-4xl font-bold tracking-tight text-transparent sm:text-6xl"
+          >
+            Frequently Asked Questions
+          </h1>
+          <p class="mt-6 text-lg leading-8 text-gray-600">
+            Find answers to common questions about our services, process, and commitment to
+            excellence.
+          </p>
+        </div>
+      </BlurFade>
+
+      <!-- FAQ Categories -->
+      <div class="space-y-16">
+        {
+          faqCategories.map((category, categoryIndex) => (
+            <BlurFade client:load delay={0.3 + categoryIndex * 0.1}>
+              <div class="relative overflow-hidden rounded-2xl bg-white p-8 shadow-sm ring-1 ring-gray-900/5">
+                <div class="mb-8 flex items-center gap-4">
+                  <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10">
+                    <svg
+                      class="h-6 w-6 text-primary"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d={category.icon}
+                      />
+                    </svg>
+                  </div>
+                  <h2 class="text-2xl font-semibold text-gray-900">{category.title}</h2>
+                </div>
+
+                <div class="space-y-4">
+                  {category.questions.map((item, itemIndex) => (
+                    <BlurFade client:load delay={0.4 + categoryIndex * 0.1 + itemIndex * 0.05}>
+                      <Accordion client:load title={item.q}>
+                        <p class="leading-relaxed text-gray-600">{item.a}</p>
+                      </Accordion>
+                    </BlurFade>
+                  ))}
+                </div>
+              </div>
+            </BlurFade>
+          ))
+        }
+      </div>
+
+      <!-- CTA Section -->
+      <BlurFade client:load delay={1.2}>
+        <div class="mt-32 text-center">
+          <div class="relative mx-auto max-w-2xl rounded-3xl bg-primary px-8 py-16 text-center">
+            <div
+              class="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_top_right,_theme(colors.primary.400),_transparent_40%),radial-gradient(circle_at_bottom_left,_theme(colors.primary.800),_transparent_40%)] opacity-20"
+            >
+            </div>
+            <h2 class="mb-4 text-2xl font-semibold text-white">Still have questions?</h2>
+            <p class="mb-8 text-white/80">
+              We're here to help. Contact us for more detailed information about your specific
+              needs.
+            </p>
+            <a
+              href="/contact"
+              class="inline-block rounded-xl bg-white px-8 py-4 text-base font-semibold text-primary shadow-sm transition-colors hover:bg-white/90 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-primary"
+            >
+              Contact Us
+            </a>
+          </div>
+        </div>
+      </BlurFade>
+    </div>
+  </main>
+  <Footer />
+</Layout>
+
+<style>
+  /* Remove the grid pattern styles */
+</style>

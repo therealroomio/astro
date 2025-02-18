@@ -3,23 +3,23 @@ import { Image } from "astro:assets";
 import webLogo from "../assets/weblogo.png";
 
 const companyLinks = [
-	{ href: "#home", label: "Home" },
-	{ href: "#services", label: "Services" },
-	{ href: "#projects", label: "Projects" },
-	{ href: "#contact", label: "Contact" },
+  { href: "#home", label: "Home" },
+  { href: "#services", label: "Services" },
+  { href: "#projects", label: "Projects" },
+  { href: "#contact", label: "Contact" },
 ];
 
 const pagesLinks = [
-	{ href: "/faq", label: "FAQ" },
-	{ href: "/terms", label: "Terms & Condition" },
-	{ href: "/policies", label: "Policies" },
-	{ href: "/license", label: "License" },
+  { href: "/faq", label: "FAQ" },
+  { href: "/terms", label: "Terms & Condition" },
+  { href: "/policies", label: "Policies" },
+  { href: "/license", label: "License" },
 ];
 
 const socialLinks = [
-	{ href: "https://twitter.com/gulfbuilders", label: "Twitter" },
-	{ href: "https://linkedin.com/company/gulfbuilders", label: "Linkedin" },
-	{ href: "https://discord.gg/gulfbuilders", label: "Discord" },
+  { href: "https://twitter.com/gulfbuilders", label: "Twitter" },
+  { href: "https://linkedin.com/company/gulfbuilders", label: "Linkedin" },
+  { href: "https://discord.gg/gulfbuilders", label: "Discord" },
 ];
 
 const address = "70 University Ave, Toronto, ON M5J 2M4";
@@ -28,106 +28,102 @@ const email = "hello@gulfbuilders.ca";
 ---
 
 <footer class="bg-primary text-white">
-	<div class="mx-auto w-full max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
-		<div class="grid grid-cols-1 gap-8 lg:grid-cols-2">
-			<!-- Logo and Description -->
-			<div>
-				<Image src={webLogo} alt="Gulf Builders Logo" class="h-20 w-20 mb-6" />
-				<div class="flex items-center gap-3">
+  <div class="mx-auto w-full max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 gap-8 lg:grid-cols-2">
+      <!-- Logo and Description -->
+      <div>
+        <Image src={webLogo} alt="Gulf Builders Logo" class="mb-6 h-20 w-auto" />
+        <div class="flex items-center gap-3">
+          <span class="text-xl font-semibold">Gulf Builders</span>
+        </div>
+        <p class="mt-4 max-w-md text-white/80">
+          Develops conceptual design ideas, refines them into detailed plans, and brings them to
+          life with unmatched craftsmanship.
+        </p>
+        <div class="mt-6 flex gap-4">
+          {
+            socialLinks.map(({ href, label }) => (
+              <a
+                href={href}
+                class="rounded-lg bg-white/10 p-2 text-white/90 transition-colors hover:bg-white/20"
+                aria-label={label}
+              >
+                <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84" />
+                </svg>
+              </a>
+            ))
+          }
+        </div>
+      </div>
 
+      <!-- Links Grid -->
+      <div class="grid grid-cols-2 gap-8">
+        <div>
+          <p class="font-medium">Company</p>
+          <ul class="mt-4 space-y-2">
+            {
+              companyLinks.map(({ href, label }) => (
+                <li>
+                  <a
+                    href={href}
+                    class="text-white/80 transition-colors hover:text-white hover:underline"
+                  >
+                    {label}
+                  </a>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+        <div>
+          <p class="font-medium">Pages</p>
+          <ul class="mt-4 space-y-2">
+            {
+              pagesLinks.map(({ href, label }) => (
+                <li>
+                  <a
+                    href={href}
+                    class="text-white/80 transition-colors hover:text-white hover:underline"
+                  >
+                    {label}
+                  </a>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+      </div>
+    </div>
 
-					<span class="text-xl font-semibold">Gulf Builders</span>
-				</div>
-				<p class="mt-4 max-w-md text-white/80">
-					Develops conceptual design ideas, refines them into detailed plans, and brings them to life with
-					unmatched craftsmanship.
-				</p>
-				<div class="mt-6 flex gap-4">
-					{
-						socialLinks.map(({ href, label }) => (
-							<a
-								href={href}
-								class="rounded-lg bg-white/10 p-2 text-white/90 transition-colors hover:bg-white/20"
-								aria-label={label}
-							>
-								<svg
-									class="h-6 w-6"
-									fill="currentColor"
-									viewBox="0 0 24 24"
-									aria-hidden="true"
-								>
-									<path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84" />
-								</svg>
-							</a>
-						))
-					}
-				</div>
-			</div>
+    <!-- Contact Info -->
+    <div class="mt-12 grid grid-cols-1 gap-8 border-t border-white/10 pt-8 sm:grid-cols-3">
+      <div>
+        <p class="font-medium">Address</p>
+        <p class="mt-2 text-sm text-white/80">{address}</p>
+      </div>
+      <div>
+        <p class="font-medium">Phone</p>
+        <a href={`tel:${phone}`} class="mt-2 block text-sm text-white/80 hover:text-white">
+          {phone}
+        </a>
+      </div>
+      <div>
+        <p class="font-medium">Email</p>
+        <a href={`mailto:${email}`} class="mt-2 block text-sm text-white/80 hover:text-white">
+          {email}
+        </a>
+      </div>
+    </div>
 
-			<!-- Links Grid -->
-			<div class="grid grid-cols-2 gap-8 ">
-				<div>
-					<p class="font-medium">Company</p>
-					<ul class="mt-4 space-y-2">
-						{
-							companyLinks.map(({ href, label }) => (
-								<li>
-									<a
-										href={href}
-										class="text-white/80 transition-colors hover:text-white hover:underline"
-									>
-										{label}
-									</a>
-								</li>
-							))
-						}
-					</ul>
-				</div>
-				<div>
-					<p class="font-medium">Pages</p>
-					<ul class="mt-4 space-y-2">
-						{
-							pagesLinks.map(({ href, label }) => (
-								<li>
-									<a
-										href={href}
-										class="text-white/80 transition-colors hover:text-white hover:underline"
-									>
-										{label}
-									</a>
-								</li>
-							))
-						}
-					</ul>
-				</div>
-			</div>
-		</div>
-
-		<!-- Contact Info -->
-		<div class="mt-12 grid grid-cols-1 gap-8 border-t border-white/10 pt-8 sm:grid-cols-3">
-			<div>
-				<p class="font-medium">Address</p>
-				<p class="mt-2 text-sm text-white/80">{address}</p>
-			</div>
-			<div>
-				<p class="font-medium">Phone</p>
-				<a href={`tel:${phone}`} class="mt-2 block text-sm text-white/80 hover:text-white">
-					{phone}
-				</a>
-			</div>
-			<div>
-				<p class="font-medium">Email</p>
-				<a href={`mailto:${email}`} class="mt-2 block text-sm text-white/80 hover:text-white">
-					{email}
-				</a>
-			</div>
-		</div>
-
-		<!-- Copyright -->
-		<div class="mt-8 border-t border-white/10 pt-8">
-			<p class="text-center text-sm text-white/80">
-				&copy; {new Date().getFullYear()} Gulf Builders. All rights reserved. Powered by <a href="https://roomikh.com" target="_blank">Roomi</a>.
-			</p>
-		</div>
-	</div>
+    <!-- Copyright -->
+    <div class="mt-8 border-t border-white/10 pt-8">
+      <p class="text-center text-sm text-white/80">
+        &copy; {new Date().getFullYear()} Gulf Builders. All rights reserved. Powered by <a
+          href="https://roomikh.com"
+          target="_blank">Valeo</a
+        >.
+      </p>
+    </div>
+  </div>
 </footer>
