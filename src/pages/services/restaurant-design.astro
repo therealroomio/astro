@@ -1,0 +1,88 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Navbar from "../../components/Navbar.astro";
+import Footer from "../../components/Footer.astro";
+import BlurFade from "../../components/magicui/blur-fade";
+import { Image } from "astro:assets";
+import Accordion from "../../components/ui/Accordion";
+
+const serviceName = "Restaurant Design";
+
+const title = `Professional ${serviceName} Services in Toronto | Gulf Builders`;
+const description = "Specialized design solutions for restaurants, bars, and hospitality spaces.";
+const keywords =
+  "restaurant design, hospitality interior design Toronto, Gulf Builders restaurant design";
+
+const structuredData = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  name: `${serviceName} Services`,
+  provider: {
+    "@type": "Organization",
+    name: "Gulf Builders",
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: "70 University Ave",
+      addressLocality: "Toronto",
+      addressRegion: "ON",
+      postalCode: "M5J 2M4",
+      addressCountry: "CA",
+    },
+    telephone: "+1 (647) 123-4567",
+    geo: {
+      "@type": "GeoCoordinates",
+      latitude: "43.6461",
+      longitude: "-79.3802",
+    },
+    openingHoursSpecification: {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+      opens: "09:00",
+      closes: "17:00",
+    },
+  },
+  areaServed: {
+    "@type": "City",
+    name: "Toronto",
+  },
+  description: description,
+  serviceType: serviceName,
+  offers: {
+    "@type": "Offer",
+    availability: "https://schema.org/InStock",
+    priceSpecification: {
+      "@type": "PriceSpecification",
+      priceCurrency: "CAD",
+    },
+  },
+  aggregateRating: {
+    "@type": "AggregateRating",
+    ratingValue: "4.9",
+    reviewCount: "87",
+    bestRating: "5",
+    worstRating: "1",
+  },
+};
+
+const teamMembers = [];
+const serviceFeatures = [];
+const processSteps = [];
+---
+
+<Layout {title} {description} {structuredData}>
+  <Navbar />
+  <section class="py-20">
+    <div class="container mx-auto text-center">
+      <BlurFade inView>
+        <h1 class="mb-4 text-4xl font-bold">{serviceName}</h1>
+        <p class="mb-8">{description}</p>
+      </BlurFade>
+    </div>
+  </section>
+  <section class="container mx-auto px-4 sm:px-6 lg:px-8">
+    <BlurFade inView>
+      <p>Details about our {serviceName.toLowerCase()} offerings will be provided here.</p>
+    </BlurFade>
+  </section>
+  <Footer />
+</Layout>

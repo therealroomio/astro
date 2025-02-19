@@ -1,5 +1,6 @@
 ---
 import BlurFade from "./magicui/blur-fade";
+import DesktopNav from "./ui/DesktopNav";
 
 interface Props {
   class?: string;
@@ -7,9 +8,74 @@ interface Props {
 
 const { class: className } = Astro.props;
 
-const navItems = [
+const services = [
+  {
+    title: "Interior Design",
+    description: "Creating stunning, functional spaces that reflect your unique style and needs.",
+    href: "/services/interior-design",
+  },
+  {
+    title: "Luxury Renovation",
+    description:
+      "Transforming existing spaces into modern, beautiful environments with premium finishes.",
+    href: "/services/luxury-renovation",
+  },
+  {
+    title: "Custom Builds",
+    description: "Building your dream home from the ground up with attention to every detail.",
+    href: "/services/custom-builds",
+  },
+  {
+    title: "Project Management",
+    description: "Ensuring your project runs smoothly from concept to completion.",
+    href: "/services/project-management",
+  },
+  {
+    title: "Smart Home Integration",
+    description: "Incorporating cutting-edge home automation and smart technology solutions.",
+    href: "/services/smart-home-integration",
+  },
+  {
+    title: "Sustainable Design",
+    description:
+      "Eco-friendly solutions and sustainable materials for environmentally conscious living.",
+    href: "/services/sustainable-design",
+  },
+  {
+    title: "Commercial Spaces",
+    description: "Designing and building professional environments that inspire productivity.",
+    href: "/services/commercial-spaces",
+  },
+  {
+    title: "Retail Design",
+    description:
+      "Creating engaging retail spaces that enhance customer experience and drive sales.",
+    href: "/services/retail-design",
+  },
+  {
+    title: "Luxury Pools & Spas",
+    description: "Designing and installing custom pools and spa retreats for ultimate relaxation.",
+    href: "/services/luxury-pools-spas",
+  },
+  {
+    title: "Outdoor Living",
+    description: "Crafting luxurious outdoor spaces for entertainment and relaxation.",
+    href: "/services/outdoor-living",
+  },
+  {
+    title: "Restaurant Design",
+    description: "Specialized design solutions for restaurants, bars, and hospitality spaces.",
+    href: "/services/restaurant-design",
+  },
+  {
+    title: "Corporate Offices",
+    description: "Modern office designs that balance professionalism with employee comfort.",
+    href: "/services/corporate-offices",
+  },
+];
+
+const otherNavItems = [
   { href: "#home", label: "Home" },
-  { href: "#services", label: "Services" },
   { href: "#projects", label: "Projects" },
   { href: "#contact", label: "Contact" },
 ];
@@ -22,22 +88,25 @@ const navItems = [
   ]}
 >
   <nav class="container mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="flex h-16 items-center justify-between">
+    <div class="flex h-20 items-center justify-between">
       <!-- Logo -->
       <div class="flex-shrink-0">
         <a href="#home" class="text-xl font-bold text-primary"> Gulf Builders </a>
       </div>
 
       <!-- Desktop Navigation -->
-      <div class="hidden md:flex md:items-center md:space-x-8">
-        {navItems.map(({ href, label }) => (
-          <a
-            href={href}
-            class="text-foreground/80 transition-colors hover:text-foreground"
-          >
-            {label}
-          </a>
-        ))}
+      <div class="hidden flex-1 justify-center md:flex">
+        <DesktopNav client:load services={services} otherNavItems={otherNavItems} />
+      </div>
+
+      <!-- CTA Button -->
+      <div class="hidden md:block">
+        <a
+          href="#contact"
+          class="inline-flex items-center justify-center rounded-full bg-primary px-6 py-2.5 text-sm font-medium text-white shadow-sm transition-colors hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
+        >
+          Free Estimate
+        </a>
       </div>
 
       <!-- Mobile Navigation Button -->
@@ -62,8 +131,7 @@ const navItems = [
             stroke-linecap="round"
             stroke-linejoin="round"
             stroke-width="2"
-            d="M4 6h16M4 12h16M4 18h16"
-          ></path>
+            d="M4 6h16M4 12h16M4 18h16"></path>
         </svg>
       </button>
     </div>
@@ -72,14 +140,61 @@ const navItems = [
   <!-- Mobile menu -->
   <div class="hidden md:hidden" id="mobile-menu">
     <div class="space-y-1 px-4 pb-3 pt-2">
-      {navItems.map(({ href, label }) => (
-        <a
-          href={href}
-          class="block rounded-md px-3 py-2 text-base font-medium text-foreground/80 hover:bg-gray-100 hover:text-foreground"
+      <a
+        href="#home"
+        class="block rounded-md px-3 py-2 text-base font-medium text-foreground/80 hover:bg-gray-100 hover:text-foreground"
+      >
+        Home
+      </a>
+      <div class="relative">
+        <button
+          id="mobile-services-button"
+          class="flex w-full items-center justify-between rounded-md px-3 py-2 text-base font-medium text-foreground/80 hover:bg-gray-100 hover:text-foreground"
         >
-          {label}
+          Services
+          <svg
+            class="h-5 w-5"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"
+            ></path>
+          </svg>
+        </button>
+        <div id="mobile-services-menu" class="hidden space-y-1 px-4 py-2">
+          {
+            services.map((service) => (
+              <a
+                href={service.href}
+                class="block rounded-md px-3 py-2 text-sm font-medium text-foreground/80 hover:bg-gray-100 hover:text-foreground"
+              >
+                {service.title}
+              </a>
+            ))
+          }
+        </div>
+      </div>
+      {
+        otherNavItems.map(({ href, label }) => (
+          <a
+            href={href}
+            class="block rounded-md px-3 py-2 text-base font-medium text-foreground/80 hover:bg-gray-100 hover:text-foreground"
+          >
+            {label}
+          </a>
+        ))
+      }
+      <!-- Mobile CTA -->
+      <div class="mt-4 px-3">
+        <a
+          href="#contact"
+          class="block w-full rounded-full bg-primary px-4 py-2.5 text-center text-base font-medium text-white shadow-sm hover:bg-primary/90"
+        >
+          Free Estimate
         </a>
-      ))}
+      </div>
     </div>
   </div>
 </header>
@@ -88,6 +203,8 @@ const navItems = [
   const mobileMenuButton = document.getElementById("mobile-menu-button");
   const mobileMenu = document.getElementById("mobile-menu");
   const menuIconPath = document.getElementById("menu-icon-path");
+  const mobileServicesButton = document.getElementById("mobile-services-button");
+  const mobileServicesMenu = document.getElementById("mobile-services-menu");
 
   // Toggle mobile menu visibility
   mobileMenuButton?.addEventListener("click", () => {
@@ -104,26 +221,32 @@ const navItems = [
     );
   });
 
+  // Toggle services submenu in mobile view
+  mobileServicesButton?.addEventListener("click", () => {
+    mobileServicesMenu?.classList.toggle("hidden");
+  });
+
   // Smooth scrolling for anchor links
   document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
     anchor.addEventListener("click", (e) => {
       e.preventDefault();
       const targetId = anchor.getAttribute("href");
+      if (!targetId) return;
+
       const targetElement = document.querySelector(targetId);
+      if (!targetElement) return;
 
-      if (targetElement) {
-        // Scroll into view smoothly
-        targetElement.scrollIntoView({ behavior: "smooth", block: "start" });
+      // Scroll into view smoothly
+      targetElement.scrollIntoView({ behavior: "smooth", block: "start" });
 
-        // Close mobile menu after selection
-        if (mobileMenu && !mobileMenu.classList.contains("hidden")) {
-          mobileMenu.classList.add("hidden");
-          mobileMenuButton.setAttribute("aria-expanded", "false");
-          menuIconPath?.setAttribute(
-            "d",
-            "M4 6h16M4 12h16M4 18h16" // Reset to hamburger icon
-          );
-        }
+      // Close mobile menu after selection
+      if (mobileMenu && !mobileMenu.classList.contains("hidden")) {
+        mobileMenu.classList.add("hidden");
+        mobileMenuButton?.setAttribute("aria-expanded", "false");
+        menuIconPath?.setAttribute(
+          "d",
+          "M4 6h16M4 12h16M4 18h16" // Reset to hamburger icon
+        );
       }
     });
   });

@@ -1,0 +1,649 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Navbar from "../../components/Navbar.astro";
+import Footer from "../../components/Footer.astro";
+import BlurFade from "../../components/magicui/blur-fade";
+import { Image } from "astro:assets";
+import Accordion from "../../components/ui/Accordion";
+
+const serviceName = "Smart Home Integration";
+
+const title = "Advanced Smart Home Integration Services in Toronto | Gulf Builders";
+const description =
+  "Transform your home with Gulf Builders' cutting-edge smart home integration services. Our certified smart home specialists bring 15+ years of experience in designing and implementing state-of-the-art home automation solutions for modern living.";
+const keywords =
+  "smart home integration Toronto, home automation services, smart home design, home technology integration, Gulf Builders smart home, smart home installation Toronto, home automation systems";
+
+const structuredData = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  name: "Smart Home Integration Services",
+  provider: {
+    "@type": "Organization",
+    name: "Gulf Builders",
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: "70 University Ave",
+      addressLocality: "Toronto",
+      addressRegion: "ON",
+      postalCode: "M5J 2M4",
+      addressCountry: "CA",
+    },
+    telephone: "+1 (647) 123-4567",
+    geo: {
+      "@type": "GeoCoordinates",
+      latitude: "43.6461",
+      longitude: "-79.3802",
+    },
+    openingHoursSpecification: {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+      opens: "09:00",
+      closes: "17:00",
+    },
+  },
+  areaServed: {
+    "@type": "City",
+    name: "Toronto",
+  },
+  description: description,
+  serviceType: "Smart Home Integration",
+  offers: {
+    "@type": "Offer",
+    availability: "https://schema.org/InStock",
+    priceSpecification: {
+      "@type": "PriceSpecification",
+      priceCurrency: "CAD",
+    },
+  },
+  aggregateRating: {
+    "@type": "AggregateRating",
+    ratingValue: "4.9",
+    reviewCount: "78",
+    bestRating: "5",
+    worstRating: "1",
+  },
+  hasOfferCatalog: {
+    "@type": "OfferCatalog",
+    name: "Smart Home Integration Services",
+    itemListElement: [
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "Complete Home Automation",
+          description: "Comprehensive smart home system design and integration",
+        },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "Smart Security Systems",
+          description: "Advanced home security and surveillance integration",
+        },
+      },
+    ],
+  },
+};
+
+// Team members for authority and trust signals
+const teamMembers = [
+  {
+    name: "Zafar Ahmadzai",
+    role: "Smart Home Systems Architect",
+    credentials: "CEDIA Certified, KNX Partner, Control4 Certified",
+    experience: "15+ years of experience in home automation",
+    specialties: ["System Design", "Network Infrastructure", "IoT Integration"],
+    icon: "M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z",
+  },
+  {
+    name: "Rashid Dostum",
+    role: "Home Technology Specialist",
+    credentials: "Lutron Certified, Crestron Certified, FIBARO Expert",
+    experience: "12+ years specializing in smart lighting and climate control",
+    specialties: ["Lighting Control", "Climate Systems", "Voice Integration"],
+    icon: "M13 10V3L4 14h7v7l9-11h-7z",
+  },
+];
+
+// Service features with icons
+const serviceFeatures = [
+  {
+    title: "Home Automation",
+    description:
+      "Comprehensive automation systems for lighting, climate, security, and entertainment",
+    icon: "M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z",
+  },
+  {
+    title: "Smart Security",
+    description: "Advanced security systems with remote monitoring and automated responses",
+    icon: "M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z",
+  },
+  {
+    title: "Energy Management",
+    description: "Smart energy solutions for optimal efficiency and reduced environmental impact",
+    icon: "M13 10V3L4 14h7v7l9-11h-7z",
+  },
+  {
+    title: "Entertainment Systems",
+    description: "Integrated audio-visual solutions for immersive home entertainment",
+    icon: "M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z",
+  },
+];
+
+// Project process steps
+const processSteps = [
+  {
+    step: "01",
+    title: "Consultation & Design",
+    description:
+      "In-depth assessment of your needs and lifestyle to design a customized smart home solution that enhances your daily living.",
+    icon: "M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2",
+  },
+  {
+    step: "02",
+    title: "System Planning",
+    description:
+      "Detailed technical planning including network infrastructure, device selection, and integration strategies.",
+    icon: "M12 6v6m0 0v6m0-6h6m-6 0H6",
+  },
+  {
+    step: "03",
+    title: "Installation",
+    description:
+      "Professional installation of all systems with minimal disruption to your home and lifestyle.",
+    icon: "M17 14v6m-3-3h6M6 10h2a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v2a2 2 0 002 2zm10 0h2a2 2 0 002-2V6a2 2 0 00-2-2h-2a2 2 0 00-2 2v2a2 2 0 002 2zM6 20h2a2 2 0 002-2v-2a2 2 0 00-2-2H6a2 2 0 00-2 2v2a2 2 0 002 2z",
+  },
+  {
+    step: "04",
+    title: "Programming & Testing",
+    description:
+      "Comprehensive system programming, testing, and user training to ensure optimal performance.",
+    icon: "M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01",
+  },
+];
+
+// Enhanced testimonials with specific project details
+const testimonials = [
+  {
+    quote:
+      "Gulf Builders transformed our home into a smart oasis. The integration of lighting, climate, and security systems has made our daily life more comfortable and efficient.",
+    author: "James Wilson",
+    role: "Homeowner",
+    project: "Complete Home Automation",
+    projectDetails: "Luxury residence automation",
+    location: "Forest Hill, Toronto",
+    rating: 5,
+    date: "2023",
+  },
+  {
+    quote:
+      "The energy management system they installed has reduced our energy consumption by 30%. Their expertise in smart home technology is truly impressive.",
+    author: "Emily Chen",
+    role: "Property Owner",
+    project: "Energy Management System",
+    projectDetails: "Smart energy integration",
+    location: "Yorkville",
+    rating: 5,
+    date: "2023",
+  },
+  {
+    quote:
+      "Their home theater and audio system installation exceeded our expectations. The seamless integration with our smart home controls is exactly what we wanted.",
+    author: "Michael Thompson",
+    role: "Tech Executive",
+    project: "Entertainment System",
+    projectDetails: "Custom home theater",
+    location: "Rosedale",
+    rating: 5,
+    date: "2023",
+  },
+];
+
+// Enhanced FAQ data with smart home-specific questions
+const faqs = [
+  {
+    question: "What smart home systems do you integrate?",
+    answer:
+      "We integrate a wide range of smart home systems including:\n\n- Lighting control systems\n- Climate control and HVAC\n- Security and surveillance\n- Home entertainment systems\n- Voice control integration\n- Energy management\n- Automated window treatments\n\nWe work with leading brands and can customize solutions to your needs.",
+  },
+  {
+    question: "How do you ensure system reliability?",
+    answer:
+      "Our reliability measures include:\n\n- Enterprise-grade networking\n- Redundant systems\n- Backup power solutions\n- Regular system monitoring\n- Preventive maintenance\n- Remote diagnostics\n\nWe design systems with multiple failsafes to ensure continuous operation.",
+  },
+  {
+    question: "What about cybersecurity?",
+    answer:
+      "Our security approach includes:\n\n- Advanced network encryption\n- Secure device configuration\n- Regular security updates\n- Network segregation\n- Firewall protection\n- Access control systems\n\nWe prioritize the security of your smart home systems.",
+  },
+  {
+    question: "Can you integrate with existing systems?",
+    answer:
+      "Our integration capabilities include:\n\n- Legacy system integration\n- Cross-platform compatibility\n- Custom API development\n- Wireless retrofitting\n- System upgrades\n- Protocol bridging\n\nWe can work with most existing systems to enhance their capabilities.",
+  },
+  {
+    question: "What support do you provide after installation?",
+    answer:
+      "Our support services include:\n\n- 24/7 technical support\n- Remote system monitoring\n- Regular maintenance\n- System updates\n- User training\n- Troubleshooting assistance\n\nWe ensure your system continues to perform optimally.",
+  },
+  {
+    question: "How future-proof are your installations?",
+    answer:
+      "Our future-proofing strategy includes:\n\n- Scalable infrastructure\n- Modular system design\n- Open standards support\n- Regular firmware updates\n- Expandable capacity\n- Technology roadmap planning\n\nWe design systems that can grow and adapt with your needs.",
+  },
+];
+---
+
+<Layout>
+  <head>
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="keywords" content={keywords} />
+
+    <!-- Open Graph / Social Media Meta Tags -->
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="/images/smart-home-showcase.jpg" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <!-- Structured Data -->
+    <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
+
+    <!-- Additional SEO Meta Tags -->
+    <meta name="author" content="Gulf Builders" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://gulfbuilders.ca/services/smart-home-integration" />
+
+    <!-- Enhanced accessibility meta tags -->
+    <meta name="theme-color" content="#ffffff" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  </head>
+
+  <Navbar />
+  <main class="relative" role="main" aria-labelledby="main-heading">
+    <!-- Hero Section -->
+    <section class="relative overflow-hidden bg-white py-32 sm:py-40" aria-labelledby="hero-heading">
+      <BlurFade client:load delay={0.2}>
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div class="grid min-h-[70vh] gap-12 lg:grid-cols-2 lg:gap-8">
+            <div class="flex flex-col justify-center">
+              <h1 id="main-heading" class="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">
+                Smart Home Excellence
+              </h1>
+              <p class="mt-6 text-lg leading-8 text-gray-600">
+                Transform your living space with cutting-edge home automation. Our certified specialists
+                bring extensive experience in creating intelligent, connected environments that enhance
+                your lifestyle through innovative technology.
+              </p>
+              <div class="mt-8 flex gap-4">
+                <a
+                  href="#contact"
+                  class="rounded-xl bg-primary px-8 py-4 text-base font-semibold text-white shadow-sm hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
+                >
+                  Start Your Project
+                </a>
+                <a
+                  href="#process"
+                  class="rounded-xl bg-gray-50 px-8 py-4 text-base font-semibold text-gray-900 shadow-sm hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-300"
+                >
+                  Learn More
+                </a>
+              </div>
+            </div>
+            <div class="relative flex items-center">
+              <div class="aspect-[4/3] overflow-hidden rounded-2xl bg-gray-50">
+                <img
+                  src="/images/smart-home-hero.jpg"
+                  alt="Smart home automation showcase"
+                  class="h-full w-full object-cover"
+                  width="800"
+                  height="600"
+                  loading="eager"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </BlurFade>
+    </section>
+
+    <!-- Features Section -->
+    <section class="bg-gray-50 py-24 sm:py-32">
+      <BlurFade client:load delay={0.3}>
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div class="mx-auto max-w-2xl text-center">
+            <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+              Comprehensive Smart Home Solutions
+            </h2>
+            <p class="mt-6 text-lg leading-8 text-gray-600">
+              Our smart home integration services cover every aspect of modern home automation,
+              from basic controls to advanced automated systems.
+            </p>
+          </div>
+          <div class="mt-16 grid gap-12 sm:grid-cols-2 lg:grid-cols-4">
+            {
+              serviceFeatures.map((feature, index) => (
+                <BlurFade client:load delay={0.4 + index * 0.1}>
+                  <div class="relative">
+                    <div class="mb-6 flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10">
+                      <svg
+                        class="h-6 w-6 text-primary"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d={feature.icon}
+                        />
+                      </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900">{feature.title}</h3>
+                    <p class="mt-2 text-base text-gray-600">{feature.description}</p>
+                  </div>
+                </BlurFade>
+              ))
+            }
+          </div>
+        </div>
+      </BlurFade>
+    </section>
+
+    <!-- Process Section -->
+    <section id="process" class="relative bg-white py-24 sm:py-32">
+      <!-- Background Pattern -->
+      <div class="absolute inset-0 -z-10">
+        <div class="absolute inset-y-0 left-0 -z-10 w-full overflow-hidden bg-gray-50">
+          <div class="absolute -left-[40%] top-0 h-[1000px] w-[80%] -rotate-12 bg-white"></div>
+        </div>
+      </div>
+
+      <BlurFade client:load delay={0.4}>
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div class="mx-auto max-w-2xl text-center">
+            <h2 class="bg-gradient-to-r from-gray-900 to-gray-600 bg-clip-text text-3xl font-bold tracking-tight text-transparent sm:text-4xl">
+              Our Integration Process
+            </h2>
+            <p class="mt-6 text-lg leading-8 text-gray-600">
+              A systematic approach to implementing smart home technology, ensuring seamless
+              integration and optimal performance.
+            </p>
+          </div>
+
+          <div class="mt-16 lg:mt-24">
+            <div class="relative">
+              <!-- Timeline Line -->
+              <div class="absolute left-1/2 top-0 hidden h-full w-0.5 -translate-x-1/2 bg-gray-200 lg:block"></div>
+
+              <!-- Process Steps -->
+              <div class="space-y-16 lg:space-y-32">
+                {processSteps.map((step, index) => (
+                  <BlurFade client:load delay={0.5 + index * 0.1}>
+                    <div class={`relative flex flex-col gap-8 lg:flex-row ${index % 2 === 1 ? 'lg:flex-row-reverse' : ''}`}>
+                      <!-- Timeline Dot -->
+                      <div class="absolute left-1/2 top-0 hidden h-6 w-6 -translate-x-1/2 lg:block">
+                        <div class="h-full w-full rounded-full border-4 border-white bg-primary shadow-lg"></div>
+                      </div>
+
+                      <!-- Content -->
+                      <div class="flex-1 lg:w-1/2">
+                        <div class="group relative rounded-2xl bg-white p-8 shadow-sm ring-1 ring-gray-900/5 transition-all hover:shadow-lg">
+                          <div class="mb-6 flex items-center gap-4">
+                            <div class="flex h-14 w-14 items-center justify-center rounded-xl bg-primary text-xl font-bold text-white shadow-sm">
+                              {step.step}
+                            </div>
+                            <div class="flex h-14 w-14 items-center justify-center rounded-xl bg-primary/10">
+                              <svg
+                                class="h-6 w-6 text-primary"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
+                              >
+                                <path
+                                  stroke-linecap="round"
+                                  stroke-linejoin="round"
+                                  stroke-width="2"
+                                  d={step.icon}
+                                />
+                              </svg>
+                            </div>
+                          </div>
+                          <h3 class="text-xl font-semibold text-gray-900">{step.title}</h3>
+                          <p class="mt-2 text-base leading-relaxed text-gray-600">{step.description}</p>
+                          
+                          <!-- Decorative Arrow -->
+                          <div class="absolute right-8 top-8 text-primary opacity-0 transition-opacity group-hover:opacity-100">
+                            <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                            </svg>
+                          </div>
+                        </div>
+                      </div>
+
+                      <!-- Spacer for alternating layout -->
+                      <div class="hidden lg:block lg:w-1/2"></div>
+                    </div>
+                  </BlurFade>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </BlurFade>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="bg-white py-24 sm:py-32" aria-labelledby="testimonials-heading">
+      <BlurFade client:load delay={0.6}>
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div class="mx-auto max-w-2xl text-center">
+            <h2 id="testimonials-heading" class="bg-gradient-to-r from-gray-900 to-gray-600 bg-clip-text text-3xl font-bold tracking-tight text-transparent sm:text-4xl">
+              What Our Clients Say
+            </h2>
+            <p class="mt-6 text-lg leading-8 text-gray-600">
+              Read about real experiences from our satisfied clients across Toronto.
+            </p>
+          </div>
+
+          <div class="mt-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+            {testimonials.map((testimonial, index) => (
+              <BlurFade client:load delay={0.7 + index * 0.1}>
+                <div class="relative rounded-2xl bg-white p-8 shadow-sm ring-1 ring-gray-900/5">
+                  <!-- Rating Stars -->
+                  <div class="mb-4 flex text-primary" role="img" aria-label={`${testimonial.rating} out of 5 stars`}>
+                    {Array.from({ length: testimonial.rating }).map(() => (
+                      <svg class="h-5 w-5 fill-current" viewBox="0 0 20 20" aria-hidden="true">
+                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                      </svg>
+                    ))}
+                  </div>
+
+                  <blockquote class="mb-6 text-base italic text-gray-600">"{testimonial.quote}"</blockquote>
+
+                  <div class="mt-4">
+                    <p class="font-semibold text-gray-900">{testimonial.author}</p>
+                    <p class="text-sm text-gray-600">{testimonial.role}</p>
+                    <p class="mt-1 text-sm font-medium text-primary">{testimonial.project}</p>
+                    <div class="mt-2 flex flex-wrap gap-2">
+                      <span class="inline-flex items-center rounded-full bg-primary/5 px-3 py-1 text-xs font-medium text-primary">
+                        {testimonial.projectDetails}
+                      </span>
+                      <span class="inline-flex items-center rounded-full bg-primary/5 px-3 py-1 text-xs font-medium text-primary">
+                        {testimonial.location}
+                      </span>
+                      <span class="inline-flex items-center rounded-full bg-primary/5 px-3 py-1 text-xs font-medium text-primary">
+                        {testimonial.date}
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </BlurFade>
+            ))}
+          </div>
+        </div>
+      </BlurFade>
+    </section>
+
+    <!-- Team Section -->
+    <section class="bg-gray-50 py-24 sm:py-32">
+      <BlurFade client:load delay={0.6}>
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div class="mx-auto max-w-2xl text-center">
+            <h2 class="bg-gradient-to-r from-gray-900 to-gray-600 bg-clip-text text-3xl font-bold tracking-tight text-transparent sm:text-4xl">
+              Meet Our Smart Home Experts
+            </h2>
+            <p class="mt-6 text-lg leading-8 text-gray-600">
+              Our team of certified smart home specialists brings extensive experience in
+              designing and implementing cutting-edge automation solutions.
+            </p>
+          </div>
+          <div class="mt-16 grid gap-8 sm:grid-cols-2">
+            {teamMembers.map((member, index) => (
+              <BlurFade client:load delay={0.7 + index * 0.1}>
+                <div class="group relative overflow-hidden rounded-2xl bg-white p-8 shadow-sm ring-1 ring-gray-900/5 transition-all hover:shadow-lg">
+                  <!-- Decorative Background Pattern -->
+                  <div class="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_top_right,_theme(colors.primary.50),_transparent_40%)] opacity-0 transition-opacity group-hover:opacity-100"></div>
+                  
+                  <div class="flex items-start gap-4">
+                    <!-- Icon Container -->
+                    <div class="flex h-16 w-16 flex-shrink-0 items-center justify-center rounded-xl bg-primary/10">
+                      <svg
+                        class="h-8 w-8 text-primary"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d={member.icon}
+                        />
+                      </svg>
+                    </div>
+
+                    <!-- Content -->
+                    <div class="flex-1">
+                      <h3 class="text-xl font-semibold text-gray-900">{member.name}</h3>
+                      <p class="mt-1 text-sm font-medium text-primary">{member.role}</p>
+                      <p class="mt-2 text-sm text-gray-600">{member.credentials}</p>
+                      <p class="mt-1 text-sm text-gray-600">{member.experience}</p>
+                      
+                      <!-- Specialties -->
+                      <div class="mt-4 flex flex-wrap gap-2">
+                        {member.specialties.map((specialty) => (
+                          <span class="inline-flex items-center rounded-full bg-primary/5 px-3 py-1 text-xs font-medium text-primary">
+                            {specialty}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Decorative Arrow -->
+                  <div class="absolute right-8 top-8 text-primary opacity-0 transition-opacity group-hover:opacity-100">
+                    <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                    </svg>
+                  </div>
+                </div>
+              </BlurFade>
+            ))}
+          </div>
+        </div>
+      </BlurFade>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="bg-gray-50 py-24 sm:py-32" aria-labelledby="faq-heading">
+      <BlurFade client:load delay={0.7}>
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div class="mx-auto max-w-2xl text-center">
+            <h2 id="faq-heading" class="bg-gradient-to-r from-gray-900 to-gray-600 bg-clip-text text-3xl font-bold tracking-tight text-transparent sm:text-4xl">
+              Frequently Asked Questions
+            </h2>
+            <p class="mt-6 text-lg leading-8 text-gray-600">
+              Find answers to common questions about our smart home integration services.
+            </p>
+          </div>
+
+          <div class="mt-16 space-y-4">
+            {faqs.map((faq, index) => (
+              <BlurFade client:load delay={0.8 + index * 0.1}>
+                <Accordion client:load title={faq.question}>
+                  <div class="text-base leading-relaxed text-gray-600">
+                    {faq.answer.split('\n\n').map((paragraph) => (
+                      <div class="mb-4 last:mb-0">
+                        {paragraph.startsWith('- ') ? (
+                          <ul class="list-disc space-y-2 pl-4">
+                            {paragraph.split('\n').map((item) => (
+                              <li>{item.replace('- ', '')}</li>
+                            ))}
+                          </ul>
+                        ) : paragraph.match(/^\d\./) ? (
+                          <ol class="list-decimal space-y-2 pl-4">
+                            {paragraph.split('\n').map((item) => (
+                              <li>{item.replace(/^\d\.\s/, '')}</li>
+                            ))}
+                          </ol>
+                        ) : (
+                          <p>{paragraph}</p>
+                        )}
+                      </div>
+                    ))}
+                  </div>
+                </Accordion>
+              </BlurFade>
+            ))}
+          </div>
+    </div>
+      </BlurFade>
+  </section>
+
+    <!-- CTA Section -->
+    <section id="contact" class="bg-white py-24 sm:py-32">
+      <BlurFade client:load delay={0.8}>
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div class="relative mx-auto max-w-2xl rounded-3xl bg-primary px-8 py-16 text-center">
+            <div
+              class="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_top_right,_theme(colors.primary.400),_transparent_40%),radial-gradient(circle_at_bottom_left,_theme(colors.primary.800),_transparent_40%)] opacity-20"
+            >
+            </div>
+            <h2 class="text-2xl font-semibold text-white">Ready to Transform Your Home?</h2>
+            <p class="mt-4 text-lg text-white/80">
+              Contact us today for a free consultation and let's create your smart home experience.
+            </p>
+            <div class="mt-8 flex justify-center gap-4">
+              <a
+                href="/contact"
+                class="rounded-xl bg-white px-8 py-4 text-base font-semibold text-primary shadow-sm transition-colors hover:bg-white/90 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-primary"
+              >
+                Schedule Consultation
+              </a>
+            </div>
+          </div>
+        </div>
+    </BlurFade>
+  </section>
+  </main>
+  <Footer />
+</Layout>
+
+<style>
+  /* Add any additional styles here */
+  @keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
+  }
+
+  .float-animation {
+    animation: float 6s ease-in-out infinite;
+  }
+</style>
