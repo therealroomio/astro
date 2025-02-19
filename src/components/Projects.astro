@@ -9,97 +9,97 @@ import office from "../assets/office.jpg";
 import basement from "../assets/basement.jpg";
 
 const projects = [
-	{
-		title: "Contemporary Living Room",
-		image: livingRoom,
-		category: "Living Space",
-		description: "Modern design with clean lines and natural light",
-	},
-	{
-		title: "Gourmet Kitchen",
-		image: kitchen,
-		category: "Kitchen",
-		description: "Luxurious kitchen with premium appliances",
-	},
-	{
-		title: "Executive Office",
-		image: office,
-		category: "Commercial",
-		description: "Professional workspace with elegant details",
-	},
-	{
-		title: "Master Bedroom Suite",
-		image: bedroom,
-		category: "Bedroom",
-		description: "Serene retreat with custom furnishings",
-	},
-	{
-		title: "Spa-Like Bathroom",
-		image: bathroom,
-		category: "Bathroom",
-		description: "Luxurious bathroom with modern fixtures",
-	},
-	{
-		title: "Entertainment Basement",
-		image: basement,
-		category: "Entertainment",
-		description: "Multi-functional space for family gatherings",
-	},
+  {
+    title: "Contemporary Living Room",
+    image: livingRoom,
+    category: "Living Space",
+    description: "Modern design with clean lines and natural light",
+  },
+  {
+    title: "Gourmet Kitchen",
+    image: kitchen,
+    category: "Kitchen",
+    description: "Luxurious kitchen with premium appliances",
+  },
+  {
+    title: "Executive Office",
+    image: office,
+    category: "Commercial",
+    description: "Professional workspace with elegant details",
+  },
+  {
+    title: "Master Bedroom Suite",
+    image: bedroom,
+    category: "Bedroom",
+    description: "Serene retreat with custom furnishings",
+  },
+  {
+    title: "Spa-Like Bathroom",
+    image: bathroom,
+    category: "Bathroom",
+    description: "Luxurious bathroom with modern fixtures",
+  },
+  {
+    title: "Entertainment Basement",
+    image: basement,
+    category: "Entertainment",
+    description: "Multi-functional space for family gatherings",
+  },
 ];
 ---
 
 <section class="bg-background py-24" id="projects">
-	<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-		<BlurFade client:load delay={0.15} inView>
-			<div class="mx-auto mb-16 max-w-2xl text-center">
-				<h2 class="mb-4 text-3xl font-bold text-foreground">Our Projects & Designs</h2>
-				<p class="text-muted-foreground">
-					Explore our portfolio of completed projects, each reflecting our commitment to excellence
-					and innovative design solutions.
-				</p>
-			</div>
-		</BlurFade>
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <BlurFade client:load delay={0.15} inView>
+      <div class="mx-auto mb-16 max-w-2xl text-center">
+        <h2 class="mb-4 text-3xl font-bold text-foreground">Our Projects & Designs</h2>
+        <p class="text-muted-foreground">
+          Explore our portfolio of completed projects, each reflecting our commitment to excellence
+          and innovative design solutions.
+        </p>
+      </div>
+    </BlurFade>
 
-		<div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
-			{
-				projects.map((project, index) => (
-					<BlurFade client:load delay={0.15 * (index + 1)} inView>
-						<div class="group relative overflow-hidden rounded-xl">
-							<div class="relative aspect-[4/3] w-full">
-								<Image
-									src={project.image}
-									alt={project.title}
-									class="h-full w-full transform object-cover transition-transform duration-500 group-hover:scale-105"
-									quality="max"
-									format="webp"
-								/>
-								<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent opacity-0 transition-all duration-300 group-hover:opacity-100">
-									<div class="absolute bottom-0 left-0 right-0 translate-y-4 p-6 transition-transform duration-300 group-hover:translate-y-0">
-										<div class="text-white">
-											<span class="mb-2 inline-block rounded-full bg-primary/90 px-3 py-1 text-xs text-white/90">
-												{project.category}
-											</span>
-											<h3 class="mb-2 text-xl font-semibold">{project.title}</h3>
-											<p class="text-sm text-white/80">{project.description}</p>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</BlurFade>
-				))
-			}
-		</div>
+    <div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+      {
+        projects.map((project, index) => (
+          <BlurFade client:load delay={0.15 * (index + 1)} inView>
+            <div class="group relative overflow-hidden rounded-xl">
+              <div class="relative aspect-[4/3] w-full">
+                <Image
+                  src={project.image}
+                  alt={project.title}
+                  class="h-full w-full transform object-cover transition-transform duration-500 group-hover:scale-105"
+                  quality="max"
+                  format="webp"
+                />
+                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent opacity-0 transition-all duration-300 group-hover:opacity-100">
+                  <div class="absolute bottom-0 left-0 right-0 translate-y-4 p-6 transition-transform duration-300 group-hover:translate-y-0">
+                    <div class="text-white">
+                      <span class="mb-2 inline-block rounded-full bg-primary/90 px-3 py-1 text-xs text-white/90">
+                        {project.category}
+                      </span>
+                      <h3 class="mb-2 text-xl font-semibold">{project.title}</h3>
+                      <p class="text-sm text-white/80">{project.description}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </BlurFade>
+        ))
+      }
+    </div>
 
-		<BlurFade client:load delay={0.15 * (projects.length + 1)} inView>
-			<div class="mt-16 text-center">
-				<a
-					href="#contact"
-					class="inline-flex items-center justify-center rounded-full bg-primary px-8 py-3 font-medium text-white transition-colors hover:bg-primary/90"
-				>
-					Start Your Project
-				</a>
-			</div>
-		</BlurFade>
-	</div>
+    <BlurFade client:load delay={0.15 * (projects.length + 1)} inView>
+      <div class="mt-16 text-center">
+        <a
+          href="#contact"
+          class="inline-flex items-center justify-center rounded-full bg-primary px-8 py-3 font-medium text-white transition-colors hover:bg-primary/90"
+        >
+          Start Your Project
+        </a>
+      </div>
+    </BlurFade>
+  </div>
 </section>

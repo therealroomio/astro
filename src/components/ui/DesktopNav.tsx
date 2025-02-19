@@ -25,12 +25,14 @@ interface DesktopNavProps {
 }
 
 export default function DesktopNav({ services, otherNavItems }: DesktopNavProps) {
+  const nonHomeItems = otherNavItems.filter((item) => item.label !== "Home");
+
   return (
     <NavigationMenu className="max-w-none">
       <NavigationMenuList className="gap-2">
         <NavigationMenuItem>
           <NavigationMenuLink
-            href="#home"
+            href="/"
             className="group inline-flex h-10 w-max items-center justify-center rounded-md bg-transparent px-4 py-2 text-sm font-medium transition-colors hover:bg-neutral-100 hover:text-neutral-900 focus:bg-neutral-100 focus:text-neutral-900 focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-neutral-100/50 data-[state=open]:bg-neutral-100/50"
           >
             Home
@@ -59,7 +61,7 @@ export default function DesktopNav({ services, otherNavItems }: DesktopNavProps)
             </div>
           </NavigationMenuContent>
         </NavigationMenuItem>
-        {otherNavItems.map(({ href, label }) => (
+        {nonHomeItems.map(({ href, label }) => (
           <NavigationMenuItem key={href}>
             <NavigationMenuLink
               href={href}

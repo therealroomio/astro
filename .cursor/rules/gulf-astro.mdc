@@ -3,52 +3,83 @@ description: astrorules
 globs: 
 ---
 rules:
-  astro_project_guidelines:
-    description: "Guidelines specific to gulf-astro, an Astro project using TypeScript and Tailwind CSS."
-    enabled: true
-    rules:
-      - "Follow Astro's file-based routing conventions (e.g., place pages in src/pages)."
-      - "Develop UI using .astro components with a clear separation between layouts and content."
-      - "Leverage Astro's partial hydration using client:* directives only when needed."
-      - "Prioritize static site generation and minimize client-side JavaScript."
-      - "Enforce strict TypeScript settings for enhanced type safety."
-      - "Use Tailwind CSS utility classes consistently for scalable, responsive design."
 
-  coding_style:
-    description: "Maintain a clean, modular, and DRY coding style throughout the project."
-    enabled: true
-    rules:
-      - "Start each file with a brief header comment describing its purpose."
-      - "Use descriptive variable and function names."
-      - "Favor functional components and keep component logic modular."
-      - "Abstract common patterns to avoid code duplication."
+astro_project_guidelines:
 
-  commit_guidelines:
-    description: "Use conventional commit messages to keep version history clear and informative."
-    enabled: true
-    rules:
-      - "Commit messages should be in lowercase and use conventional types (feat, fix, chore, etc.)."
-      - "Keep the subject line concise (ideally under 60 characters)."
-      - "Include a clear scope when applicable."
-    examples:
-      - prompt: "<diff_context> /commit"
-        response: "git commit -m 'feat: add responsive hero section with Tailwind CSS'"
+description: "Guidelines specific to gulf-astro, an Astro project using TypeScript and Tailwind CSS."
 
-  documentation:
-    description: "Ensure thorough documentation for components, pages, and the overall project."
-    enabled: true
-    rules:
-      - "Document component props and expected behaviors in inline comments and README files."
-      - "Include proper frontmatter and context in Markdown content files."
-      - "Keep all documentation up to date to support both developers and AI context."
+enabled: true
+
+rules:
+
+- "Follow Astro's file-based routing conventions (e.g., place pages in src/pages)."
+
+- "Develop UI using .astro components with a clear separation between layouts and content."
+
+- "Leverage Astro's partial hydration using client:* directives only when needed."
+
+- "Prioritize static site generation and minimize client-side JavaScript."
+
+- "Enforce strict TypeScript settings for enhanced type safety."
+
+- "Use Tailwind CSS utility classes consistently for scalable, responsive design."
+
+coding_style:
+
+description: "Maintain a clean, modular, and DRY coding style throughout the project."
+
+enabled: true
+
+rules:
+
+- "Start each file with a brief header comment describing its purpose."
+
+- "Use descriptive variable and function names."
+
+- "Favor functional components and keep component logic modular."
+
+- "Abstract common patterns to avoid code duplication."
+
+commit_guidelines:
+
+description: "Use conventional commit messages to keep version history clear and informative."
+
+enabled: true
+
+rules:
+
+- "Commit messages should be in lowercase and use conventional types (feat, fix, chore, etc.)."
+
+- "Keep the subject line concise (ideally under 60 characters)."
+
+- "Include a clear scope when applicable."
+
+examples:
+
+- prompt: "<diff_context> /commit"
+
+response: "git commit -m 'feat: add responsive hero section with Tailwind CSS'"
+
+documentation:
+
+description: "Ensure thorough documentation for components, pages, and the overall project."
+
+enabled: true
+
+rules:
+
+- "Document component props and expected behaviors in inline comments and README files."
+
+- "Include proper frontmatter and context in Markdown content files."
+
+- "Keep all documentation up to date to support both developers and AI context."
 
 project_info:
-  name: "gulf-astro"
-  framework: "Astro"
-  language: "TypeScript"
-  styling: "Tailwind CSS"
 
-notes: >
-  This cursorrules file provides project-specific context for gulf-astro.
-  It streamlines AI code generation and review by enforcing consistent guidelines
-  on project structure, coding style, commit messaging, and documentation.
+name: "gulf-astro"
+
+framework: "Astro"
+
+language: "TypeScript"
+
+styling: "Tailwind CSS"
