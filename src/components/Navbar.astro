@@ -9,10 +9,46 @@ interface Props {
 const { class: className } = Astro.props;
 
 const services = [
+  // All services in alphabetical order
+  {
+    title: "Cement Work",
+    description:
+      "Expert concrete solutions for foundations, driveways, patios, and decorative elements with professional finishing.",
+    href: "/services/cement-work",
+  },
+  {
+    title: "Commercial Applications",
+    description:
+      "Specialized construction and renovation services for offices, retail spaces, restaurants, and other commercial environments.",
+    href: "/services/commercial-spaces",
+  },
+  {
+    title: "Custom Builds",
+    description: "Building your dream home from the ground up with attention to every detail.",
+    href: "/services/custom-builds",
+  },
+  {
+    title: "Gates",
+    description:
+      "Custom gate design and installation for enhanced security, privacy, and curb appeal with various style options.",
+    href: "/services/gates",
+  },
   {
     title: "Interior Design",
     description: "Creating stunning, functional spaces that reflect your unique style and needs.",
     href: "/services/interior-design",
+  },
+  {
+    title: "Interior Finishes",
+    description:
+      "Expert installation of tiling, wood laminate, engineered hardwood, and other premium interior finishes.",
+    href: "/services/interior-finishes",
+  },
+  {
+    title: "Interlocks",
+    description:
+      "Premium interlock installations for driveways, walkways, and patios, creating durable and aesthetically pleasing outdoor surfaces.",
+    href: "/services/interlocks",
   },
   {
     title: "Luxury Renovation",
@@ -21,9 +57,27 @@ const services = [
     href: "/services/luxury-renovation",
   },
   {
-    title: "Custom Builds",
-    description: "Building your dream home from the ground up with attention to every detail.",
-    href: "/services/custom-builds",
+    title: "Outdoor Living",
+    description: "Crafting luxurious outdoor spaces for entertainment and relaxation.",
+    href: "/services/outdoor-living",
+  },
+  {
+    title: "Package Security",
+    description:
+      "Advanced security systems including cameras, alarms, access control, and monitoring services for complete peace of mind.",
+    href: "/services/package-security",
+  },
+  {
+    title: "Painting",
+    description:
+      "Professional interior and exterior painting services with premium finishes and expert color consultation.",
+    href: "/services/painting",
+  },
+  {
+    title: "PPF Premium Packages",
+    description:
+      "Exclusive packages with high-end materials, appliances, and premium finishes for discerning clients.",
+    href: "/services/premium-packages",
   },
   {
     title: "Project Management",
@@ -31,8 +85,15 @@ const services = [
     href: "/services/project-management",
   },
   {
+    title: "Renovations",
+    description:
+      "Full-service renovations for basements, kitchens, bathrooms, and complete homes with attention to detail.",
+    href: "/services/renovations",
+  },
+  {
     title: "Smart Home Integration",
-    description: "Incorporating cutting-edge home automation and smart technology solutions.",
+    description:
+      "Comprehensive smart home solutions integrating lighting, climate control, security, and entertainment systems.",
     href: "/services/smart-home-integration",
   },
   {
@@ -41,41 +102,11 @@ const services = [
       "Eco-friendly solutions and sustainable materials for environmentally conscious living.",
     href: "/services/sustainable-design",
   },
-  {
-    title: "Commercial Spaces",
-    description: "Designing and building professional environments that inspire productivity.",
-    href: "/services/commercial-spaces",
-  },
-  {
-    title: "Retail Design",
-    description:
-      "Creating engaging retail spaces that enhance customer experience and drive sales.",
-    href: "/services/retail-design",
-  },
-  {
-    title: "Luxury Pools & Spas",
-    description: "Designing and installing custom pools and spa retreats for ultimate relaxation.",
-    href: "/services/luxury-pools-spas",
-  },
-  {
-    title: "Outdoor Living",
-    description: "Crafting luxurious outdoor spaces for entertainment and relaxation.",
-    href: "/services/outdoor-living",
-  },
-  {
-    title: "Restaurant Design",
-    description: "Specialized design solutions for restaurants, bars, and hospitality spaces.",
-    href: "/services/restaurant-design",
-  },
-  {
-    title: "Corporate Offices",
-    description: "Modern office designs that balance professionalism with employee comfort.",
-    href: "/services/corporate-offices",
-  },
 ];
 
 const otherNavItems = [
   { href: "/", label: "Home" },
+  { href: "/services", label: "All Services" },
   { href: "/faq", label: "FAQ" },
   { href: "/contact", label: "Contact" },
 ];

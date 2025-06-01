@@ -1,0 +1,49 @@
+# Gulf Builders Project Rules
+
+## Project Intelligence
+
+### Critical Paths
+- All page components should be in `src/pages`
+- All reusable components should be in `src/components`
+- Layouts should be in `src/layouts`
+- Content collections should be in `src/content`
+
+### Coding Patterns
+- Use TypeScript for all components and utilities
+- Follow Astro's file-based routing conventions
+- Use Tailwind CSS for styling with minimal custom CSS
+- Prioritize static site generation over client-side rendering
+- Use partial hydration with client:* directives only when necessary
+
+### Component Structure
+- Each component should have a brief header comment describing its purpose
+- Props interfaces should be defined for all components
+- Follow a consistent naming convention: PascalCase for components, camelCase for functions/variables
+
+### Content Management
+- Use Astro's content collections for structured content
+- Define schemas for all content types
+- Organize content by type (projects, services, team members)
+
+### Performance Guidelines
+- Optimize images before adding them to the project
+- Minimize client-side JavaScript
+- Implement lazy loading for images and heavy components
+- Keep component dependencies minimal
+
+### Documentation
+- Update Memory Bank files when making significant changes
+- Document complex components with detailed comments
+- Note any deviations from standard patterns
+
+## Project Preferences
+- Clean, minimal design aesthetic
+- Mobile-first approach to responsive design
+- Strong visual emphasis on portfolio items
+- Clear call-to-actions on all pages
+- Consistent branding elements throughout
+
+## Evolution Notes
+- Project started with standard Astro setup using TypeScript and Tailwind CSS
+- Memory Bank documentation established as the source of truth for project context
+- Directory structure follows Astro conventions with additional organization for components and content 

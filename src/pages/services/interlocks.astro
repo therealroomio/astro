@@ -1,0 +1,708 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Navbar from "../../components/Navbar.astro";
+import Footer from "../../components/Footer.astro";
+import BlurFade from "../../components/magicui/blur-fade";
+import Accordion from "../../components/ui/Accordion";
+
+// SEO metadata optimized for interlock services
+const title = "Premium Interlock Installation Services | Gulf Builders";
+const description =
+  "Transform your outdoor space with Gulf Builders' expert interlock installation services. Our skilled team creates beautiful, durable driveways, walkways, and patios with premium materials and meticulous craftsmanship.";
+const keywords =
+  "interlock installation, interlock driveway, interlock patio, outdoor interlocks, indoor interlocks, premium interlocks, driveway pavers, Toronto interlock contractor";
+
+// Enhanced structured data with more details
+const structuredData = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  name: "Interlock Installation Services",
+  provider: {
+    "@type": "Organization",
+    name: "Gulf Builders",
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: "70 University Ave",
+      addressLocality: "Toronto",
+      addressRegion: "ON",
+      postalCode: "M5J 2M4",
+      addressCountry: "CA",
+    },
+    telephone: "+1 (647) 123-4567",
+    geo: {
+      "@type": "GeoCoordinates",
+      latitude: "43.6461",
+      longitude: "-79.3802",
+    },
+    openingHoursSpecification: {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+      opens: "09:00",
+      closes: "17:00",
+    },
+  },
+  areaServed: {
+    "@type": "City",
+    name: "Toronto",
+  },
+  description: description,
+  serviceType: "Interlock Installation",
+  offers: {
+    "@type": "Offer",
+    availability: "https://schema.org/InStock",
+    priceSpecification: {
+      "@type": "PriceSpecification",
+      priceCurrency: "CAD",
+    },
+  },
+  aggregateRating: {
+    "@type": "AggregateRating",
+    ratingValue: "4.8",
+    reviewCount: "76",
+    bestRating: "5",
+    worstRating: "1",
+  },
+  hasOfferCatalog: {
+    "@type": "OfferCatalog",
+    name: "Interlock Installation Services",
+    itemListElement: [
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "Residential Interlock Installation",
+          description: "Premium interlock driveways, patios, and walkways for homes",
+        },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "Commercial Interlock Installation",
+          description: "Durable, attractive interlock solutions for commercial properties",
+        },
+      },
+    ],
+  },
+};
+
+// Team members for authority and trust signals
+const teamMembers = [
+  {
+    name: "Michael Johnson",
+    role: "Lead Interlock Specialist",
+    credentials: "ICPI Certified Installer",
+    experience: "15+ years of experience in residential and commercial interlock installations",
+    specialties: ["Driveways", "Patios", "Retaining Walls"],
+    icon: "M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6",
+  },
+  {
+    name: "David Rivera",
+    role: "Commercial Projects Director",
+    credentials: "Civil Engineering Degree, ICPI Advanced Certification",
+    experience: "12+ years specializing in large-scale commercial interlock projects",
+    specialties: ["Commercial Plazas", "Municipal Projects", "Custom Designs"],
+    icon: "M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z",
+  },
+];
+
+// Service features with icons
+const serviceFeatures = [
+  {
+    title: "Indoor & Outdoor Applications",
+    description: "Versatile interlock solutions for both interior spaces and exterior landscaping",
+    icon: "M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01",
+  },
+  {
+    title: "Premium Materials",
+    description: "High-quality interlocking stones and pavers from leading manufacturers",
+    icon: "M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4",
+  },
+  {
+    title: "Custom Designs",
+    description: "Personalized patterns and designs to match your architectural style",
+    icon: "M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z",
+  },
+  {
+    title: "Professional Installation",
+    description: "Expert installation with proper base preparation for long-lasting results",
+    icon: "M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z",
+  },
+];
+
+// Project process steps
+const processSteps = [
+  {
+    step: "01",
+    title: "Initial Consultation",
+    description:
+      "On-site assessment and detailed discussion of your needs, preferences, and budget.",
+    icon: "M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z",
+  },
+  {
+    step: "02",
+    title: "Design & Material Selection",
+    description:
+      "Creation of custom design layouts and selection of appropriate materials and colors.",
+    icon: "M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z",
+  },
+  {
+    step: "03",
+    title: "Site Preparation",
+    description:
+      "Thorough excavation, grading, and base preparation to ensure proper drainage and stability.",
+    icon: "M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01",
+  },
+  {
+    step: "04",
+    title: "Professional Installation",
+    description:
+      "Expert installation with precision cutting, proper spacing, and meticulous finishing.",
+    icon: "M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z",
+  },
+];
+
+// Enhanced testimonials with specific project details
+const testimonials = [
+  {
+    quote:
+      "Gulf Builders transformed our old cracked driveway into a stunning interlock masterpiece. The attention to detail in the curved border design and perfect slope for drainage shows their expertise. The team was professional, clean, and finished ahead of schedule.",
+    author: "Robert Simmons",
+    role: "Homeowner",
+    project: "Driveway & Walkway Installation",
+    projectDetails: "1,200 sq ft project",
+    location: "North York",
+    rating: 5,
+    date: "2023",
+  },
+  {
+    quote:
+      "We hired Gulf Builders for our commercial plaza entrance and the results exceeded our expectations. Their ability to handle the complex pattern we wanted while ensuring durability for high foot traffic was impressive. Their knowledge of commercial grade materials was invaluable.",
+    author: "Maria Rodriguez",
+    role: "Property Manager",
+    project: "Commercial Plaza Entrance",
+    projectDetails: "2,500 sq ft installation",
+    location: "Mississauga",
+    rating: 5,
+    date: "2023",
+  },
+  {
+    quote:
+      "The indoor interlock flooring Gulf Builders installed in our sunroom is not only beautiful but has significantly improved the insulation. They provided excellent guidance on material selection for indoor use and executed the installation flawlessly.",
+    author: "Jennifer Patel",
+    role: "Homeowner",
+    project: "Indoor Interlock Flooring",
+    projectDetails: "400 sq ft sunroom",
+    location: "Etobicoke",
+    rating: 5,
+    date: "2022",
+  },
+  {
+    quote:
+      "Gulf Builders created the perfect interlock patio and fire pit area for our backyard. Their design suggestions maximized our space while creating distinct zones for dining and relaxation. The built-in lighting they installed makes the space magical at night.",
+    author: "Michael Thompson",
+    role: "Homeowner",
+    project: "Backyard Patio & Fire Pit",
+    projectDetails: "800 sq ft outdoor living space",
+    location: "Richmond Hill",
+    rating: 5,
+    date: "2023",
+  },
+];
+
+// Enhanced FAQ data with comprehensive questions and structured answers
+const faqs = [
+  {
+    question: "What types of interlock materials do you offer?",
+    answer:
+      "We offer a comprehensive selection of premium interlock materials:\n\n- Concrete pavers in various styles, colors, and finishes\n- Natural stone options including flagstone and granite\n- Porcelain pavers for indoor and high-end outdoor applications\n- Permeable pavers for environmentally-friendly drainage solutions\n- Clay brick pavers for classic and traditional aesthetics\n\nDuring our consultation, we'll help you select the perfect material based on your design preferences, application requirements, and budget considerations.",
+  },
+  {
+    question: "How long does an interlock installation project typically take?",
+    answer:
+      "Project timelines vary based on size, complexity, and weather conditions:\n\n- Small walkways: 2-3 days\n- Average residential driveway: 3-5 days\n- Large patio with complex design: 5-7 days\n- Commercial projects: 1-3 weeks depending on scope\n\nOur process includes proper excavation, thorough base preparation, precise installation, and detailed finishing work. While we work efficiently, we never rush quality craftsmanship.",
+  },
+  {
+    question: "How durable are interlock installations and what maintenance is required?",
+    answer:
+      "Properly installed interlocking pavers are extremely durable and can last 25-30+ years with basic maintenance. Their maintenance requirements include:\n\n- Regular sweeping to remove debris\n- Occasional rinsing with a garden hose\n- Annual inspection for any shifting or settling\n- Reapplication of polymeric sand every 3-5 years as needed\n- Sealing (optional) every 3-5 years to enhance color and protection\n\nInterlock pavers offer the advantage of easy repair - individual pavers can be replaced if damaged without disturbing the entire surface.",
+  },
+  {
+    question: "Can interlock be installed over existing concrete?",
+    answer:
+      "Yes, in certain circumstances, interlock can be installed over existing concrete:\n\n- The concrete must be in good structural condition without major cracks\n- Proper drainage must be ensured\n- Special thin pavers or a modified installation technique may be required\n- Height considerations must be addressed (door clearances, step heights, etc.)\n\nDuring our assessment, we'll evaluate your existing concrete to determine if an overlay installation is suitable or if removal is recommended for best results.",
+  },
+  {
+    question: "What is the difference between indoor and outdoor interlock applications?",
+    answer:
+      "Indoor and outdoor interlock applications differ in several important ways:\n\n**Indoor Applications:**\n- Often use thinner, more precisely cut materials\n- Require special consideration for floor levelness\n- May utilize different base materials suitable for interior environments\n- Often incorporate radiant heating systems\n- Focus on comfort underfoot and seamless transitions\n\n**Outdoor Applications:**\n- Use weather-resistant materials designed to withstand freezing/thawing\n- Require proper drainage systems and slope planning\n- Need substantial base preparation for stability\n- Must account for seasonal ground movement\n- Often incorporate edge restraints for structural integrity",
+  },
+  {
+    question: "What is the process for getting an estimate for an interlock project?",
+    answer:
+      "Our estimation process is thorough and transparent:\n\n1. Initial phone or online consultation to understand your project needs\n2. On-site assessment to measure the area and evaluate site conditions\n3. Discussion of material options, design preferences, and any special requirements\n4. Detailed written estimate provided within 2-3 business days\n5. Estimate review meeting to answer questions and make any adjustments\n\nOur estimates include all aspects of the project including materials, labor, equipment, site preparation, and cleanup. We provide a clear breakdown of costs with no hidden fees.",
+  },
+  {
+    question: "Do you offer any warranty on interlock installations?",
+    answer:
+      "Yes, we stand behind our workmanship and materials with comprehensive warranties:\n\n- 5-year workmanship warranty covering installation quality\n- Manufacturer warranties on materials (typically 25+ years)\n- Settlement guarantee with free adjustments for the first year\n- Extended maintenance plans available for commercial properties\n\nOur warranty documentation clearly outlines coverage details, maintenance requirements, and the simple process for addressing any concerns that might arise.",
+  },
+  {
+    question: "What sets Gulf Builders apart from other interlock contractors?",
+    answer:
+      "Gulf Builders differentiates itself through several key advantages:\n\n- ICPI certified installers with extensive training and experience\n- Comprehensive project management from design to completion\n- Premium materials from top manufacturers with extensive options\n- Proper base preparation that exceeds industry standards\n- Precision cutting and detailed finishing work\n- Sophisticated drainage solutions to prevent water issues\n- Clean, professional work sites with minimal disruption\n- Transparent pricing and detailed contracts\n\nWe approach each project with the same attention to detail whether it's a small walkway or large commercial installation.",
+  },
+];
+---
+
+<Layout>
+  <head>
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="keywords" content={keywords} />
+
+    <!-- Open Graph / Social Media Meta Tags -->
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="/images/interlock-showcase.jpg" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <!-- Structured Data -->
+    <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
+
+    <!-- Additional SEO Meta Tags -->
+    <meta name="author" content="Gulf Builders" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://gulfbuilders.ca/services/interlocks" />
+
+    <!-- Enhanced accessibility meta tags -->
+    <meta name="theme-color" content="#ffffff" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  </head>
+
+  <Navbar />
+  <main class="relative" role="main" aria-labelledby="main-heading">
+    <!-- Hero Section -->
+    <section class="relative overflow-hidden bg-white py-32 sm:py-40" aria-labelledby="hero-heading">
+      <BlurFade client:load delay={0.2}>
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div class="grid min-h-[70vh] gap-12 lg:grid-cols-2 lg:gap-8">
+            <div class="flex flex-col justify-center">
+              <h1 id="main-heading" class="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">
+                Premium Interlock Installation Services
+              </h1>
+              <p class="mt-6 text-lg leading-8 text-gray-600">
+                Transform your outdoor and indoor spaces with beautiful, durable interlock
+                solutions. Our expert team delivers exceptional craftsmanship and attention to detail 
+                for driveways, patios, walkways, and unique installations.
+              </p>
+              <div class="mt-8 flex gap-4">
+                <a
+                  href="#contact"
+                  class="rounded-xl bg-primary px-8 py-4 text-base font-semibold text-white shadow-sm hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
+                >
+                  Start Your Project
+                </a>
+                <a
+                  href="#process"
+                  class="rounded-xl bg-gray-50 px-8 py-4 text-base font-semibold text-gray-900 shadow-sm hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-300"
+                >
+                  Learn More
+                </a>
+              </div>
+            </div>
+            <div class="relative flex items-center">
+              <div class="aspect-[4/3] overflow-hidden rounded-2xl bg-gray-50">
+                <img
+                  src="/images/interlock-hero.jpg"
+                  alt="Premium interlock driveway installation by Gulf Builders"
+                  class="h-full w-full object-cover"
+                  width="800"
+                  height="600"
+                  loading="eager"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </BlurFade>
+    </section>
+
+    <!-- Features Section -->
+    <section class="bg-gray-50 py-24 sm:py-32">
+      <BlurFade client:load delay={0.3}>
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div class="mx-auto max-w-2xl text-center">
+            <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+              Comprehensive Interlock Services
+            </h2>
+            <p class="mt-6 text-lg leading-8 text-gray-600">
+              Our interlock solutions cover both indoor and outdoor applications with premium materials
+              and expert installation.
+            </p>
+          </div>
+          <div class="mt-16 grid gap-12 sm:grid-cols-2 lg:grid-cols-4">
+            {
+              serviceFeatures.map((feature, index) => (
+                <BlurFade client:load delay={0.4 + index * 0.1}>
+                  <div class="relative">
+                    <div class="mb-6 flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10">
+                      <svg
+                        class="h-6 w-6 text-primary"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d={feature.icon}
+                        />
+                      </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900">{feature.title}</h3>
+                    <p class="mt-2 text-base text-gray-600">{feature.description}</p>
+                  </div>
+                </BlurFade>
+              ))
+            }
+          </div>
+        </div>
+      </BlurFade>
+    </section>
+
+    <!-- Process Section -->
+    <section id="process" class="relative bg-white py-24 sm:py-32">
+      <!-- Background Pattern -->
+      <div class="absolute inset-0 -z-10">
+        <div class="absolute inset-y-0 left-0 -z-10 w-full overflow-hidden bg-gray-50">
+          <div class="absolute -left-[40%] top-0 h-[1000px] w-[80%] -rotate-12 bg-white"></div>
+        </div>
+      </div>
+
+      <BlurFade client:load delay={0.4}>
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div class="mx-auto max-w-2xl text-center">
+            <h2 class="bg-gradient-to-r from-gray-900 to-gray-600 bg-clip-text text-3xl font-bold tracking-tight text-transparent sm:text-4xl">
+              Our Installation Process
+            </h2>
+            <p class="mt-6 text-lg leading-8 text-gray-600">
+              A systematic approach to create beautiful, long-lasting interlock installations with proper
+              preparation and attention to detail.
+            </p>
+          </div>
+
+          <div class="mt-16 lg:mt-24">
+            <div class="relative">
+              <!-- Timeline Line -->
+              <div class="absolute left-1/2 top-0 hidden h-full w-0.5 -translate-x-1/2 bg-gray-200 lg:block"></div>
+
+              <!-- Process Steps -->
+              <div class="space-y-16 lg:space-y-32">
+                {processSteps.map((step, index) => (
+                  <BlurFade client:load delay={0.5 + index * 0.1}>
+                    <div class={`relative flex flex-col gap-8 lg:flex-row ${index % 2 === 1 ? 'lg:flex-row-reverse' : ''}`}>
+                      <!-- Timeline Dot -->
+                      <div class="absolute left-1/2 top-0 hidden h-6 w-6 -translate-x-1/2 lg:block">
+                        <div class="h-full w-full rounded-full border-4 border-white bg-primary shadow-lg"></div>
+                      </div>
+
+                      <!-- Content -->
+                      <div class="flex-1 lg:w-1/2">
+                        <div class="group relative rounded-2xl bg-white p-8 shadow-sm ring-1 ring-gray-900/5 transition-all hover:shadow-lg">
+                          <div class="mb-6 flex items-center gap-4">
+                            <div class="flex h-14 w-14 items-center justify-center rounded-xl bg-primary text-xl font-bold text-white shadow-sm">
+                              {step.step}
+                            </div>
+                            <div class="flex h-14 w-14 items-center justify-center rounded-xl bg-primary/10">
+                              <svg
+                                class="h-6 w-6 text-primary"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
+                              >
+                                <path
+                                  stroke-linecap="round"
+                                  stroke-linejoin="round"
+                                  stroke-width="2"
+                                  d={step.icon}
+                                />
+                              </svg>
+                            </div>
+                          </div>
+                          <h3 class="text-xl font-semibold text-gray-900">{step.title}</h3>
+                          <p class="mt-2 text-base leading-relaxed text-gray-600">{step.description}</p>
+                          
+                          <!-- Decorative Arrow -->
+                          <div class="absolute right-8 top-8 text-primary opacity-0 transition-opacity group-hover:opacity-100">
+                            <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                            </svg>
+                          </div>
+                        </div>
+                      </div>
+
+                      <!-- Spacer for alternating layout -->
+                      <div class="hidden lg:block lg:w-1/2"></div>
+                    </div>
+                  </BlurFade>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </BlurFade>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="bg-white py-24 sm:py-32" aria-labelledby="testimonials-heading">
+      <BlurFade client:load delay={0.6}>
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div class="mx-auto max-w-2xl text-center">
+            <h2 id="testimonials-heading" class="bg-gradient-to-r from-gray-900 to-gray-600 bg-clip-text text-3xl font-bold tracking-tight text-transparent sm:text-4xl">
+              What Our Clients Say
+            </h2>
+            <p class="mt-6 text-lg leading-8 text-gray-600">
+              Read about real experiences from our satisfied interlock clients across Toronto.
+            </p>
+          </div>
+
+          <div class="mt-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-2">
+            {testimonials.map((testimonial, index) => (
+              <BlurFade client:load delay={0.7 + index * 0.1}>
+                <div class="relative rounded-2xl bg-white p-8 shadow-sm ring-1 ring-gray-900/5">
+                  <!-- Rating Stars -->
+                  <div class="mb-4 flex text-primary" role="img" aria-label={`${testimonial.rating} out of 5 stars`}>
+                    {Array.from({ length: testimonial.rating }).map(() => (
+                      <svg class="h-5 w-5 fill-current" viewBox="0 0 20 20" aria-hidden="true">
+                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                      </svg>
+                    ))}
+                  </div>
+
+                  <blockquote class="mb-6 text-base italic text-gray-600">"{testimonial.quote}"</blockquote>
+
+                  <div class="mt-4">
+                    <p class="font-semibold text-gray-900">{testimonial.author}</p>
+                    <p class="text-sm text-gray-600">{testimonial.role}</p>
+                    <p class="mt-1 text-sm font-medium text-primary">{testimonial.project}</p>
+                    <div class="mt-2 flex flex-wrap gap-2">
+                      <span class="inline-flex items-center rounded-full bg-primary/5 px-3 py-1 text-xs font-medium text-primary">
+                        {testimonial.projectDetails}
+                      </span>
+                      <span class="inline-flex items-center rounded-full bg-primary/5 px-3 py-1 text-xs font-medium text-primary">
+                        {testimonial.location}
+                      </span>
+                      <span class="inline-flex items-center rounded-full bg-primary/5 px-3 py-1 text-xs font-medium text-primary">
+                        {testimonial.date}
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </BlurFade>
+            ))}
+          </div>
+        </div>
+      </BlurFade>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="bg-gray-50 py-24 sm:py-32" aria-labelledby="faq-heading">
+      <BlurFade client:load delay={0.7}>
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div class="mx-auto max-w-2xl text-center">
+            <h2 id="faq-heading" class="bg-gradient-to-r from-gray-900 to-gray-600 bg-clip-text text-3xl font-bold tracking-tight text-transparent sm:text-4xl">
+              Frequently Asked Questions
+            </h2>
+            <p class="mt-6 text-lg leading-8 text-gray-600">
+              Find answers to common questions about our interlock installation services.
+            </p>
+          </div>
+
+          <div class="mt-16 space-y-4 grid grid-cols-1 gap-2">
+            {faqs.map((faq, index) => (
+              <BlurFade client:load delay={0.8 + index * 0.1}>
+                <Accordion client:load title={faq.question}>
+                  <div class="text-base leading-relaxed text-gray-600">
+                    {faq.answer.split('\n\n').map((paragraph) => (
+                      <div class="mb-4 last:mb-0">
+                        {paragraph.startsWith('- ') ? (
+                          <ul class="list-disc space-y-2 pl-4">
+                            {paragraph.split('\n').map((item) => (
+                              <li>{item.replace('- ', '')}</li>
+                            ))}
+                          </ul>
+                        ) : paragraph.match(/^\d\./) ? (
+                          <ol class="list-decimal space-y-2 pl-4">
+                            {paragraph.split('\n').map((item) => (
+                              <li>{item.replace(/^\d\.\s/, '')}</li>
+                            ))}
+                          </ol>
+                        ) : paragraph.startsWith('**') ? (
+                          <h4 class="font-medium text-gray-900">{paragraph.replace(/\*\*/g, '')}</h4>
+                        ) : (
+                          <p>{paragraph}</p>
+                        )}
+                      </div>
+                    ))}
+                  </div>
+                </Accordion>
+              </BlurFade>
+            ))}
+          </div>
+        </div>
+      </BlurFade>
+    </section>
+
+    <!-- Team Section -->
+    <section class="bg-white py-24 sm:py-32">
+      <BlurFade client:load delay={0.6}>
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div class="mx-auto max-w-2xl text-center">
+            <h2 class="bg-gradient-to-r from-gray-900 to-gray-600 bg-clip-text text-3xl font-bold tracking-tight text-transparent sm:text-4xl">
+              Meet Our Interlock Experts
+            </h2>
+            <p class="mt-6 text-lg leading-8 text-gray-600">
+              Our team of certified installers brings years of experience and technical expertise to every project.
+            </p>
+          </div>
+          <div class="mt-16 grid gap-8 sm:grid-cols-2">
+            {teamMembers.map((member, index) => (
+              <BlurFade client:load delay={0.7 + index * 0.1}>
+                <div class="group relative overflow-hidden rounded-2xl bg-white p-8 shadow-sm ring-1 ring-gray-900/5 transition-all hover:shadow-lg">
+                  <!-- Decorative Background Pattern -->
+                  <div class="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_top_right,_theme(colors.primary.50),_transparent_40%)] opacity-0 transition-opacity group-hover:opacity-100"></div>
+                  
+                  <div class="flex items-start gap-4">
+                    <!-- Icon Container -->
+                    <div class="flex h-16 w-16 flex-shrink-0 items-center justify-center rounded-xl bg-primary/10">
+                      <svg
+                        class="h-8 w-8 text-primary"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d={member.icon}
+                        />
+                      </svg>
+                    </div>
+
+                    <!-- Content -->
+                    <div class="flex-1">
+                      <h3 class="text-xl font-semibold text-gray-900">{member.name}</h3>
+                      <p class="mt-1 text-sm font-medium text-primary">{member.role}</p>
+                      <p class="mt-2 text-sm text-gray-600">{member.credentials}</p>
+                      <p class="mt-1 text-sm text-gray-600">{member.experience}</p>
+                      
+                      <!-- Specialties -->
+                      <div class="mt-4 flex flex-wrap gap-2">
+                        {member.specialties.map((specialty) => (
+                          <span class="inline-flex items-center rounded-full bg-primary/5 px-3 py-1 text-xs font-medium text-primary">
+                            {specialty}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Decorative Arrow -->
+                  <div class="absolute right-8 top-8 text-primary opacity-0 transition-opacity group-hover:opacity-100">
+                    <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                    </svg>
+                  </div>
+                </div>
+              </BlurFade>
+            ))}
+          </div>
+
+          <!-- Additional Trust Indicators -->
+          <div class="mt-16 grid gap-8 sm:grid-cols-3">
+            <BlurFade client:load delay={0.9}>
+              <div class="rounded-xl bg-white p-6 text-center shadow-sm ring-1 ring-gray-900/5">
+                <div class="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-primary/10">
+                  <svg class="h-6 w-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                  </svg>
+                </div>
+                <h3 class="text-lg font-semibold text-gray-900">ICPI Certified</h3>
+                <p class="mt-2 text-sm text-gray-600">Our installers are certified by the Interlocking Concrete Pavement Institute</p>
+              </div>
+            </BlurFade>
+
+            <BlurFade client:load delay={1.0}>
+              <div class="rounded-xl bg-white p-6 text-center shadow-sm ring-1 ring-gray-900/5">
+                <div class="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-primary/10">
+                  <svg class="h-6 w-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                  </svg>
+                </div>
+                <h3 class="text-lg font-semibold text-gray-900">Proven Track Record</h3>
+                <p class="mt-2 text-sm text-gray-600">Over 250+ successful interlock projects completed across the GTA</p>
+              </div>
+            </BlurFade>
+
+            <BlurFade client:load delay={1.1}>
+              <div class="rounded-xl bg-white p-6 text-center shadow-sm ring-1 ring-gray-900/5">
+                <div class="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-primary/10">
+                  <svg class="h-6 w-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                  </svg>
+                </div>
+                <h3 class="text-lg font-semibold text-gray-900">5-Year Warranty</h3>
+                <p class="mt-2 text-sm text-gray-600">Comprehensive warranty covering materials and workmanship</p>
+              </div>
+            </BlurFade>
+          </div>
+        </div>
+      </BlurFade>
+    </section>
+
+    <!-- CTA Section -->
+    <section id="contact" class="bg-white py-24 sm:py-32">
+      <BlurFade client:load delay={0.8}>
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div class="relative mx-auto max-w-2xl rounded-3xl bg-primary px-8 py-16 text-center">
+            <div
+              class="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_top_right,_theme(colors.primary.400),_transparent_40%),radial-gradient(circle_at_bottom_left,_theme(colors.primary.800),_transparent_40%)] opacity-20"
+            >
+            </div>
+            <h2 class="text-2xl font-semibold text-white">Ready to Transform Your Space?</h2>
+            <p class="mt-4 text-lg text-white/80">
+              Contact us today for a free consultation and let's create beautiful, durable interlock solutions for your property.
+            </p>
+            <div class="mt-8 flex justify-center gap-4">
+              <a
+                href="/contact"
+                class="rounded-xl bg-white px-8 py-4 text-base font-semibold text-primary shadow-sm transition-colors hover:bg-white/90 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-primary"
+              >
+                Schedule Consultation
+              </a>
+            </div>
+          </div>
+        </div>
+      </BlurFade>
+    </section>
+  </main>
+  <Footer />
+</Layout>
+
+<style>
+  /* Add any additional styles here */
+  @keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
+  }
+
+  .float-animation {
+    animation: float 6s ease-in-out infinite;
+  }
+</style>

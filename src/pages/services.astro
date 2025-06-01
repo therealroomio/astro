@@ -1,0 +1,287 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Navbar from "../components/Navbar.astro";
+import Footer from "../components/Footer.astro";
+import BlurFade from "../components/magicui/blur-fade";
+---
+
+<Layout>
+  <Navbar />
+  <main class="container mx-auto px-4 py-16 sm:px-6 lg:px-8">
+    <BlurFade client:load inView>
+      <div class="mb-12 text-center">
+        <h1 class="mb-4 text-4xl font-bold tracking-tight text-foreground sm:text-5xl">
+          Our Services
+        </h1>
+        <p class="mx-auto max-w-3xl text-lg text-foreground/70">
+          Gulf Builders delivers exceptional construction and renovation services with attention to detail and commitment to quality.
+        </p>
+      </div>
+    </BlurFade>
+
+    <!-- Popular Packages -->
+    <section class="mb-20">
+      <BlurFade client:load inView>
+        <h2 class="mb-8 text-3xl font-bold text-foreground">Popular Packages</h2>
+        <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+          <!-- Interlocks -->
+          <div class="rounded-lg border border-border bg-card p-6 shadow-sm transition-all hover:shadow-md">
+            <div class="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-primary/10 text-2xl text-primary">
+              🧩
+            </div>
+            <h3 class="mb-2 text-xl font-semibold">Interlocks</h3>
+            <p class="text-foreground/70">
+              Premium interlock installations for driveways, walkways, and patios, creating durable and aesthetically pleasing outdoor surfaces.
+            </p>
+          </div>
+
+          <!-- Cement -->
+          <div class="rounded-lg border border-border bg-card p-6 shadow-sm transition-all hover:shadow-md">
+            <div class="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-primary/10 text-2xl text-primary">
+              🏗️
+            </div>
+            <h3 class="mb-2 text-xl font-semibold">Cement Work</h3>
+            <p class="text-foreground/70">
+              Expert concrete solutions for foundations, driveways, patios, and decorative elements with professional finishing.
+            </p>
+          </div>
+
+          <!-- Gates -->
+          <div class="rounded-lg border border-border bg-card p-6 shadow-sm transition-all hover:shadow-md">
+            <div class="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-primary/10 text-2xl text-primary">
+              🚪
+            </div>
+            <h3 class="mb-2 text-xl font-semibold">Gates</h3>
+            <p class="text-foreground/70">
+              Custom gate design and installation for enhanced security, privacy, and curb appeal with various style options.
+            </p>
+          </div>
+
+          <!-- Smart Homes -->
+          <div class="rounded-lg border border-border bg-card p-6 shadow-sm transition-all hover:shadow-md">
+            <div class="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-primary/10 text-2xl text-primary">
+              🏠
+            </div>
+            <h3 class="mb-2 text-xl font-semibold">Smart Homes</h3>
+            <p class="text-foreground/70">
+              Comprehensive smart home solutions integrating lighting, climate control, security, and entertainment systems for modern living.
+            </p>
+          </div>
+
+          <!-- Package Security -->
+          <div class="rounded-lg border border-border bg-card p-6 shadow-sm transition-all hover:shadow-md">
+            <div class="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-primary/10 text-2xl text-primary">
+              🔒
+            </div>
+            <h3 class="mb-2 text-xl font-semibold">Package Security</h3>
+            <p class="text-foreground/70">
+              Advanced security systems including cameras, alarms, access control, and monitoring services for complete peace of mind.
+            </p>
+          </div>
+
+          <!-- Painting -->
+          <div class="rounded-lg border border-border bg-card p-6 shadow-sm transition-all hover:shadow-md">
+            <div class="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-primary/10 text-2xl text-primary">
+              🎨
+            </div>
+            <h3 class="mb-2 text-xl font-semibold">Painting</h3>
+            <p class="text-foreground/70">
+              Professional interior and exterior painting services with premium finishes and expert color consultation.
+            </p>
+          </div>
+        </div>
+      </BlurFade>
+    </section>
+
+    <!-- Renovation Services -->
+    <section class="mb-20">
+      <BlurFade client:load inView delay={0.2}>
+        <h2 class="mb-8 text-3xl font-bold text-foreground">Renovation Services</h2>
+        <div class="grid gap-8 md:grid-cols-2">
+          <!-- Interior/Exterior Renovations -->
+          <div class="rounded-lg border border-border bg-card p-6 shadow-sm">
+            <h3 class="mb-4 text-xl font-semibold">Interior & Exterior Renovations</h3>
+            <ul class="space-y-3">
+              <li class="flex items-start">
+                <span class="mr-2 text-primary">✓</span>
+                <span>Interlocks – Indoor and Outdoor applications</span>
+              </li>
+              <li class="flex items-start">
+                <span class="mr-2 text-primary">✓</span>
+                <span>Basement renovations and finishing</span>
+              </li>
+              <li class="flex items-start">
+                <span class="mr-2 text-primary">✓</span>
+                <span>Concrete work including foundations and decorative elements</span>
+              </li>
+              <li class="flex items-start">
+                <span class="mr-2 text-primary">✓</span>
+                <span>Washrooms, kitchens, and full home renovations</span>
+              </li>
+              <li class="flex items-start">
+                <span class="mr-2 text-primary">✓</span>
+                <span>All carpentry work with custom solutions</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Permit Services -->
+          <div class="rounded-lg border border-border bg-card p-6 shadow-sm">
+            <h3 class="mb-4 text-xl font-semibold">Permit & Planning Services</h3>
+            <ul class="space-y-3">
+              <li class="flex items-start">
+                <span class="mr-2 text-primary">✓</span>
+                <span>Collaboration with experienced architects</span>
+              </li>
+              <li class="flex items-start">
+                <span class="mr-2 text-primary">✓</span>
+                <span>Handling of all legal permits and approvals</span>
+              </li>
+              <li class="flex items-start">
+                <span class="mr-2 text-primary">✓</span>
+                <span>Approved in all cities and municipalities</span>
+              </li>
+              <li class="flex items-start">
+                <span class="mr-2 text-primary">✓</span>
+                <span>Comprehensive requirement management</span>
+              </li>
+              <li class="flex items-start">
+                <span class="mr-2 text-primary">✓</span>
+                <span>Streamlined approval process guidance</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </BlurFade>
+    </section>
+
+    <!-- Interior Finishes -->
+    <section class="mb-20">
+      <BlurFade client:load inView delay={0.4}>
+        <h2 class="mb-8 text-3xl font-bold text-foreground">Interior Finishes</h2>
+        <div class="grid gap-8 md:grid-cols-3">
+          <!-- Tiling -->
+          <div class="rounded-lg border border-border bg-card p-6 shadow-sm transition-all hover:shadow-md">
+            <div class="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-primary/10 text-2xl text-primary">
+              🔲
+            </div>
+            <h3 class="mb-2 text-xl font-semibold">Tiling</h3>
+            <p class="text-foreground/70">
+              Expert installation of ceramic, porcelain, natural stone, and mosaic tiles for floors, walls, backsplashes, and custom features.
+            </p>
+          </div>
+
+          <!-- Wood Laminate -->
+          <div class="rounded-lg border border-border bg-card p-6 shadow-sm transition-all hover:shadow-md">
+            <div class="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-primary/10 text-2xl text-primary">
+              🪵
+            </div>
+            <h3 class="mb-2 text-xl font-semibold">Wood Laminate</h3>
+            <p class="text-foreground/70">
+              High-quality laminate flooring solutions combining the beauty of wood with enhanced durability and maintenance benefits.
+            </p>
+          </div>
+
+          <!-- Engineered Hardwood -->
+          <div class="rounded-lg border border-border bg-card p-6 shadow-sm transition-all hover:shadow-md">
+            <div class="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-primary/10 text-2xl text-primary">
+              🌳
+            </div>
+            <h3 class="mb-2 text-xl font-semibold">Engineered Hardwood</h3>
+            <p class="text-foreground/70">
+              Premium engineered hardwood flooring options providing natural wood beauty with enhanced stability and performance.
+            </p>
+          </div>
+        </div>
+      </BlurFade>
+    </section>
+
+    <!-- Commercial Applications -->
+    <section class="mb-20">
+      <BlurFade client:load inView delay={0.6}>
+        <h2 class="mb-8 text-3xl font-bold text-foreground">Commercial Applications</h2>
+        <div class="rounded-lg border border-border bg-card p-8 shadow-md">
+          <p class="mb-6 text-lg text-foreground/80">
+            Gulf Builders provides comprehensive commercial construction and renovation services tailored to business needs. Our team specializes in creating functional, aesthetically pleasing commercial spaces that enhance productivity and customer experience.
+          </p>
+          <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            <div class="flex items-center space-x-2">
+              <span class="text-primary">✓</span>
+              <span>Office spaces</span>
+            </div>
+            <div class="flex items-center space-x-2">
+              <span class="text-primary">✓</span>
+              <span>Retail environments</span>
+            </div>
+            <div class="flex items-center space-x-2">
+              <span class="text-primary">✓</span>
+              <span>Restaurants & cafes</span>
+            </div>
+            <div class="flex items-center space-x-2">
+              <span class="text-primary">✓</span>
+              <span>Medical facilities</span>
+            </div>
+            <div class="flex items-center space-x-2">
+              <span class="text-primary">✓</span>
+              <span>Industrial buildings</span>
+            </div>
+            <div class="flex items-center space-x-2">
+              <span class="text-primary">✓</span>
+              <span>Multi-unit developments</span>
+            </div>
+          </div>
+        </div>
+      </BlurFade>
+    </section>
+
+    <!-- Specialty Packages -->
+    <section class="mb-16">
+      <BlurFade client:load inView delay={0.8}>
+        <h2 class="mb-8 text-3xl font-bold text-foreground">Specialty Packages</h2>
+        <div class="rounded-lg border-2 border-primary/20 bg-gradient-to-br from-background to-primary/5 p-8 shadow-lg">
+          <h3 class="mb-4 text-2xl font-bold text-foreground">PPF Premium Packages</h3>
+          <p class="mb-6 text-lg text-foreground/80">
+            Our exclusive Premium Package Finishes (PPF) offer curated combinations of high-end materials, appliances, and finishes for discerning clients.
+          </p>
+          <div class="grid gap-8 md:grid-cols-3">
+            <div class="rounded-md bg-background p-5 shadow-sm">
+              <h4 class="mb-3 text-xl font-semibold text-foreground">PPF Kitchen</h4>
+              <p class="mb-4 text-foreground/70">
+                Luxury kitchen packages featuring premium cabinetry, countertops, and integrated design elements.
+              </p>
+            </div>
+            <div class="rounded-md bg-background p-5 shadow-sm">
+              <h4 class="mb-3 text-xl font-semibold text-foreground">Appliances & Marble</h4>
+              <p class="mb-4 text-foreground/70">
+                Carefully selected high-end appliances paired with exquisite marble upgrades for countertops and features.
+              </p>
+            </div>
+            <div class="rounded-md bg-background p-5 shadow-sm">
+              <h4 class="mb-3 text-xl font-semibold text-foreground">Curated Finishes</h4>
+              <p class="mb-4 text-foreground/70">
+                Designer-selected premium exhausts, fixtures, and finishing touches that elevate your space to new heights.
+              </p>
+            </div>
+          </div>
+        </div>
+      </BlurFade>
+    </section>
+
+    <!-- CTA -->
+    <BlurFade client:load inView delay={1.0}>
+      <div class="rounded-lg bg-primary/10 p-8 text-center">
+        <h2 class="mb-4 text-3xl font-bold text-foreground">Ready to Transform Your Space?</h2>
+        <p class="mx-auto mb-6 max-w-2xl text-lg text-foreground/80">
+          Contact us today to discuss your project needs and discover how Gulf Builders can bring your vision to life with our expert craftsmanship and attention to detail.
+        </p>
+        <a
+          href="/contact"
+          class="inline-flex items-center justify-center rounded-full bg-primary px-6 py-3 text-base font-medium text-white transition-colors duration-200 hover:bg-primary/90"
+        >
+          Request a Consultation
+        </a>
+      </div>
+    </BlurFade>
+  </main>
+  <Footer />
+</Layout> 

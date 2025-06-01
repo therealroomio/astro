@@ -4,97 +4,94 @@ import { BentoGrid, BentoGridItem } from "./magicui/bento-grid";
 
 const services = [
   {
-    title: "Interior Design",
-    description: "Creating stunning, functional spaces that reflect your unique style and needs.",
-    icon: "🎨",
+    title: "Interlocks",
+    description: "Premium interlock installations for driveways, walkways, and patios.",
+    icon: "🧩",
     delay: 0.1,
-    href: "/services/interior-design",
+    href: "/services#interlocks",
     className: "md:col-span-2",
   },
   {
-    title: "Luxury Renovation",
-    description:
-      "Transforming existing spaces into modern, beautiful environments with premium finishes.",
-    icon: "✨",
+    title: "Cement Work",
+    description: "Expert concrete solutions for foundations, driveways, and decorative elements.",
+    icon: "🏗️",
     delay: 0.2,
+    href: "/services#cement",
+  },
+  {
+    title: "Gates",
+    description: "Custom gate design and installation for enhanced security and curb appeal.",
+    icon: "🚪",
+    delay: 0.3,
+    href: "/services#gates",
+    className: "md:col-span-2",
+  },
+  {
+    title: "Smart Homes",
+    description: "Comprehensive smart home solutions integrating lighting, climate, and security.",
+    icon: "🤖",
+    delay: 0.4,
+    href: "/services/smart-home-integration",
+  },
+  {
+    title: "Package Security",
+    description: "Advanced security systems including cameras, alarms, and access control.",
+    icon: "🔒",
+    delay: 0.5,
+    href: "/services#security",
+    className: "md:col-span-2",
+  },
+  {
+    title: "Painting",
+    description: "Professional interior and exterior painting services with premium finishes.",
+    icon: "🎨",
+    delay: 0.6,
+    href: "/services#painting",
+  },
+  {
+    title: "Renovations",
+    description: "Full-service renovations for basements, kitchens, bathrooms, and more.",
+    icon: "🔨",
+    delay: 0.7,
     href: "/services/luxury-renovation",
+    className: "md:row-span-2",
+  },
+  {
+    title: "Interior Finishes",
+    description: "Expert tiling, wood laminate, and engineered hardwood installations.",
+    icon: "🪑",
+    delay: 0.8,
+    href: "/services#interior-finishes",
+  },
+  {
+    title: "Permit Services",
+    description: "Handling all legal permits and approvals with architect collaboration.",
+    icon: "📝",
+    delay: 0.9,
+    href: "/services#permits",
+    className: "md:col-span-2",
+  },
+  {
+    title: "Commercial",
+    description: "Specialized commercial construction and renovation services.",
+    icon: "🏢",
+    delay: 1.0,
+    href: "/services/commercial-spaces",
+  },
+  {
+    title: "PPF Premium Packages",
+    description: "Exclusive packages with high-end materials, appliances, and finishes.",
+    icon: "✨",
+    delay: 1.1,
+    href: "/services#specialty-packages",
+    className: "md:col-span-2",
   },
   {
     title: "Custom Builds",
     description: "Building your dream home from the ground up with attention to every detail.",
     icon: "🏠",
-    delay: 0.3,
-    href: "/services/custom-builds",
-    className: "md:col-span-2",
-  },
-  {
-    title: "Project Management",
-    description: "Ensuring your project runs smoothly from concept to completion.",
-    icon: "📋",
-    delay: 0.4,
-    href: "/services/project-management",
-  },
-  {
-    title: "Smart Home Integration",
-    description: "Incorporating cutting-edge home automation and smart technology solutions.",
-    icon: "🤖",
-    delay: 0.5,
-    href: "/services/smart-home-integration",
-    className: "md:col-span-2",
-  },
-  {
-    title: "Sustainable Design",
-    description:
-      "Eco-friendly solutions and sustainable materials for environmentally conscious living.",
-    icon: "🌱",
-    delay: 0.6,
-    href: "/services/sustainable-design",
-  },
-  {
-    title: "Commercial Spaces",
-    description: "Designing and building professional environments that inspire productivity.",
-    icon: "🏢",
-    delay: 0.7,
-    href: "/services/commercial-spaces",
-    className: "md:row-span-2",
-  },
-  {
-    title: "Retail Design",
-    description:
-      "Creating engaging retail spaces that enhance customer experience and drive sales.",
-    icon: "🛍️",
-    delay: 0.8,
-    href: "/services/retail-design",
-  },
-  {
-    title: "Luxury Pools & Spas",
-    description: "Designing and installing custom pools and spa retreats for ultimate relaxation.",
-    icon: "🏊‍♂️",
-    delay: 0.9,
-    href: "/services/luxury-pools-spas",
-    className: "md:col-span-2",
-  },
-  {
-    title: "Outdoor Living",
-    description: "Crafting luxurious outdoor spaces for entertainment and relaxation.",
-    icon: "🌳",
-    delay: 1.0,
-    href: "/services/outdoor-living",
-  },
-  {
-    title: "Restaurant Design",
-    description: "Specialized design solutions for restaurants, bars, and hospitality spaces.",
-    icon: "🍽️",
-    delay: 1.1,
-    href: "/services/restaurant-design",
-    className: "md:col-span-2",
-  },
-  {
-    title: "Corporate Offices",
-    description: "Modern office designs that balance professionalism with employee comfort.",
-    icon: "💼",
     delay: 1.2,
-    href: "/services/corporate-offices",
+    href: "/services/custom-builds",
     className: "md:col-span-2",
   },
 ];
@@ -134,10 +131,10 @@ const services = [
     <BlurFade client:load delay={1.3} inView>
       <div class="mt-16 text-center">
         <a
-          href="/contact"
+          href="/services"
           class="inline-flex items-center justify-center rounded-full border border-transparent bg-primary px-6 py-3 text-base font-medium text-white transition-colors duration-200 hover:bg-primary/90"
         >
-          Start Your Project
+          View All Services
         </a>
       </div>
     </BlurFade>
