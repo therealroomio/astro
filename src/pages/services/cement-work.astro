@@ -1,0 +1,446 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Navbar from "../../components/Navbar.astro";
+import Footer from "../../components/Footer.astro";
+import BlurFade from "../../components/magicui/blur-fade";
+import Accordion from "../../components/ui/Accordion";
+
+// SEO metadata optimized for cement work services
+const title = "Professional Cement Work Services | Gulf Builders";
+const description =
+  "Gulf Builders provides expert concrete solutions for foundations, driveways, patios, and decorative elements with professional finishing. Our skilled team delivers durable, high-quality cement work for residential and commercial projects.";
+const keywords =
+  "cement work, concrete services, foundation work, concrete driveway, decorative concrete, stamped concrete, concrete patios, concrete finishing, Toronto concrete contractor";
+
+// Enhanced structured data with more details
+const structuredData = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  name: "Professional Cement Work Services",
+  provider: {
+    "@type": "Organization",
+    name: "Gulf Builders",
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: "70 University Ave",
+      addressLocality: "Toronto",
+      addressRegion: "ON",
+      postalCode: "M5J 2M4",
+      addressCountry: "CA",
+    },
+    telephone: "+1 (647) 123-4567",
+  },
+  description: description,
+  serviceType: "Cement Work",
+};
+
+// Team members for authority and trust signals
+const teamMembers = [
+  {
+    name: "James Wilson",
+    role: "Lead Concrete Specialist",
+    credentials: "ACI Certified Concrete Flatwork Technician",
+    experience: "18+ years of experience in residential and commercial concrete applications",
+    specialties: ["Foundations", "Decorative Concrete", "Stamped Concrete"],
+    icon: "M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6",
+  },
+  {
+    name: "Carlos Mendez",
+    role: "Decorative Concrete Expert",
+    credentials: "ASCC Decorative Concrete Certification",
+    experience: "14+ years specializing in stamped and colored concrete applications",
+    specialties: ["Stamped Patios", "Colored Concrete", "Polished Concrete"],
+    icon: "M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z",
+  },
+];
+
+// Service features with icons
+const serviceFeatures = [
+  {
+    title: "Residential & Commercial",
+    description: "Expert concrete solutions for homes, businesses, and public spaces",
+    icon: "M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6",
+  },
+  {
+    title: "Decorative Concrete",
+    description: "Stamped, colored, and textured concrete for aesthetic appeal",
+    icon: "M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z",
+  },
+  {
+    title: "Structural Concrete",
+    description: "Foundations, slabs, and structural elements built to last",
+    icon: "M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4",
+  },
+  {
+    title: "Custom Finishes",
+    description: "Professional finishing techniques for durability and aesthetics",
+    icon: "M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065z",
+  },
+];
+
+// Project process steps
+const processSteps = [
+  {
+    step: "01",
+    title: "Consultation & Planning",
+    description: "Detailed assessment of your project needs, site evaluation, and budget planning.",
+    icon: "M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z",
+  },
+  {
+    step: "02",
+    title: "Design & Specification",
+    description:
+      "Creating detailed plans, selecting concrete mix, finishes, and reinforcement methods.",
+    icon: "M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z",
+  },
+  {
+    step: "03",
+    title: "Site Preparation",
+    description:
+      "Excavation, grading, form installation, and proper base preparation for optimal results.",
+    icon: "M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01",
+  },
+  {
+    step: "04",
+    title: "Professional Installation",
+    description:
+      "Expert concrete pouring, finishing, curing, and sealing for long-lasting results.",
+    icon: "M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z",
+  },
+];
+
+// FAQs about cement work
+const faqs = [
+  {
+    question: "What types of cement work services do you offer?",
+    answer:
+      "We provide a comprehensive range of cement work services including foundations, concrete slabs, driveways, walkways, patios, retaining walls, decorative concrete, stamped concrete, and concrete repair and restoration. Our team specializes in both structural and decorative applications for residential and commercial properties.",
+  },
+  {
+    question: "How long does a typical concrete project take to complete?",
+    answer:
+      "Project timelines vary based on size, complexity, and weather conditions. Small projects like walkways might take 2-3 days, while larger projects like foundations or complex decorative patios can take 1-2 weeks. The concrete itself requires proper curing time of approximately 28 days to reach full strength, though it's typically walkable after 24-48 hours.",
+  },
+  {
+    question: "What makes decorative concrete different from standard concrete?",
+    answer:
+      "Decorative concrete incorporates special techniques such as stamping, staining, coloring, polishing, or adding textures to transform ordinary concrete into visually appealing surfaces. These methods can mimic the appearance of natural stone, brick, tile, or wood at a fraction of the cost while maintaining concrete's durability and low maintenance benefits.",
+  },
+  {
+    question: "How long will my concrete installation last?",
+    answer:
+      "With proper installation and maintenance, concrete structures can last 30+ years. Factors affecting longevity include the quality of the initial installation, concrete mix design, proper reinforcement, site preparation, climate conditions, and regular maintenance. We use industry-best practices and high-quality materials to maximize the lifespan of your concrete installation.",
+  },
+];
+---
+
+<Layout>
+  <head>
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="keywords" content={keywords} />
+    <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
+  </head>
+
+  <Navbar />
+  <main class="relative" role="main" aria-labelledby="main-heading">
+    <!-- Hero Section -->
+    <section
+      class="relative overflow-hidden bg-white py-32 sm:py-40"
+      aria-labelledby="hero-heading"
+    >
+      <BlurFade client:load delay={0.2}>
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div class="grid min-h-[70vh] gap-12 lg:grid-cols-2 lg:gap-8">
+            <div class="flex flex-col justify-center">
+              <h1
+                id="main-heading"
+                class="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl"
+              >
+                Expert Cement Work Services
+              </h1>
+              <p class="mt-6 text-lg leading-8 text-gray-600">
+                Delivering high-quality concrete solutions for foundations, driveways, patios, and
+                decorative elements. Our skilled team combines technical expertise with artistic
+                craftsmanship for durable, beautiful results.
+              </p>
+              <div class="mt-8 flex gap-4">
+                <a
+                  href="#contact"
+                  class="rounded-xl bg-primary px-8 py-4 text-base font-semibold text-white shadow-sm hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
+                >
+                  Start Your Project
+                </a>
+                <a
+                  href="#process"
+                  class="rounded-xl bg-gray-50 px-8 py-4 text-base font-semibold text-gray-900 shadow-sm hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-300"
+                >
+                  Learn More
+                </a>
+              </div>
+            </div>
+            <div class="relative flex items-center">
+              <div class="aspect-[4/3] overflow-hidden rounded-2xl bg-gray-50">
+                <img
+                  src="/images/cement-work-hero.jpg"
+                  alt="Professional cement work by Gulf Builders"
+                  class="h-full w-full object-cover"
+                  width="800"
+                  height="600"
+                  loading="eager"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </BlurFade>
+    </section>
+
+    <!-- Features Section -->
+    <section class="bg-gray-50 py-24 sm:py-32">
+      <BlurFade client:load delay={0.3}>
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div class="mx-auto max-w-2xl text-center">
+            <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+              Comprehensive Cement Solutions
+            </h2>
+            <p class="mt-6 text-lg leading-8 text-gray-600">
+              From structural foundations to decorative finishes, we deliver exceptional concrete
+              work for all applications.
+            </p>
+          </div>
+          <div class="mt-16 grid gap-12 sm:grid-cols-2 lg:grid-cols-4">
+            {
+              serviceFeatures.map((feature, index) => (
+                <BlurFade client:load delay={0.4 + index * 0.1}>
+                  <div class="relative">
+                    <div class="mb-6 flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10">
+                      <svg
+                        class="h-6 w-6 text-primary"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d={feature.icon}
+                        />
+                      </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900">{feature.title}</h3>
+                    <p class="mt-2 text-base text-gray-600">{feature.description}</p>
+                  </div>
+                </BlurFade>
+              ))
+            }
+          </div>
+        </div>
+      </BlurFade>
+    </section>
+
+    <!-- Process Section -->
+    <section id="process" class="relative bg-white py-24 sm:py-32">
+      <div class="absolute inset-0 -z-10">
+        <div class="absolute inset-y-0 left-0 -z-10 w-full overflow-hidden bg-gray-50">
+          <div class="absolute -left-[40%] top-0 h-[1000px] w-[80%] -rotate-12 bg-white"></div>
+        </div>
+      </div>
+
+      <BlurFade client:load delay={0.4}>
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div class="mx-auto max-w-2xl text-center">
+            <h2
+              class="bg-gradient-to-r from-gray-900 to-gray-600 bg-clip-text text-3xl font-bold tracking-tight text-transparent sm:text-4xl"
+            >
+              Our Cement Work Process
+            </h2>
+            <p class="mt-6 text-lg leading-8 text-gray-600">
+              A methodical approach to deliver durable, high-quality concrete solutions with
+              meticulous attention to detail.
+            </p>
+          </div>
+
+          <div class="mt-16 lg:mt-24">
+            <div class="relative">
+              <div
+                class="absolute left-1/2 top-0 hidden h-full w-0.5 -translate-x-1/2 bg-gray-200 lg:block"
+              >
+              </div>
+              <div class="space-y-16 lg:space-y-32">
+                {
+                  processSteps.map((step, index) => (
+                    <BlurFade client:load delay={0.5 + index * 0.1}>
+                      <div
+                        class={`relative flex flex-col gap-8 lg:flex-row ${index % 2 === 1 ? "lg:flex-row-reverse" : ""}`}
+                      >
+                        <div class="absolute left-1/2 top-0 hidden h-6 w-6 -translate-x-1/2 lg:block">
+                          <div class="h-full w-full rounded-full border-4 border-white bg-primary shadow-lg" />
+                        </div>
+                        <div class="flex-1 lg:w-1/2">
+                          <div class="group relative rounded-2xl bg-white p-8 shadow-sm ring-1 ring-gray-900/5 transition-all hover:shadow-lg">
+                            <div class="mb-6 flex items-center gap-4">
+                              <div class="flex h-14 w-14 items-center justify-center rounded-xl bg-primary text-xl font-bold text-white shadow-sm">
+                                {step.step}
+                              </div>
+                              <div class="flex h-14 w-14 items-center justify-center rounded-xl bg-primary/10">
+                                <svg
+                                  class="h-6 w-6 text-primary"
+                                  fill="none"
+                                  viewBox="0 0 24 24"
+                                  stroke="currentColor"
+                                >
+                                  <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d={step.icon}
+                                  />
+                                </svg>
+                              </div>
+                            </div>
+                            <h3 class="text-xl font-semibold text-gray-900">{step.title}</h3>
+                            <p class="mt-2 text-base leading-relaxed text-gray-600">
+                              {step.description}
+                            </p>
+                          </div>
+                        </div>
+                        <div class="hidden lg:block lg:w-1/2" />
+                      </div>
+                    </BlurFade>
+                  ))
+                }
+              </div>
+            </div>
+          </div>
+        </div>
+      </BlurFade>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="bg-gray-50 py-24 sm:py-32" aria-labelledby="faq-heading">
+      <BlurFade client:load delay={0.7}>
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div class="mx-auto max-w-2xl text-center">
+            <h2
+              id="faq-heading"
+              class="bg-gradient-to-r from-gray-900 to-gray-600 bg-clip-text text-3xl font-bold tracking-tight text-transparent sm:text-4xl"
+            >
+              Frequently Asked Questions
+            </h2>
+            <p class="mt-6 text-lg leading-8 text-gray-600">
+              Find answers to common questions about our cement work services.
+            </p>
+          </div>
+
+          <div class="mt-16 grid grid-cols-1 gap-2 space-y-4">
+            {
+              faqs.map((faq, index) => (
+                <BlurFade client:load delay={0.8 + index * 0.1}>
+                  <Accordion client:load title={faq.question}>
+                    <div class="text-base leading-relaxed text-gray-600">
+                      <p>{faq.answer}</p>
+                    </div>
+                  </Accordion>
+                </BlurFade>
+              ))
+            }
+          </div>
+        </div>
+      </BlurFade>
+    </section>
+
+    <!-- Team Section -->
+    <section class="bg-white py-24 sm:py-32">
+      <BlurFade client:load delay={0.6}>
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div class="mx-auto max-w-2xl text-center">
+            <h2
+              class="bg-gradient-to-r from-gray-900 to-gray-600 bg-clip-text text-3xl font-bold tracking-tight text-transparent sm:text-4xl"
+            >
+              Meet Our Concrete Experts
+            </h2>
+            <p class="mt-6 text-lg leading-8 text-gray-600">
+              Our team of certified specialists brings years of experience and technical expertise
+              to every project.
+            </p>
+          </div>
+          <div class="mt-16 grid gap-8 sm:grid-cols-2">
+            {
+              teamMembers.map((member, index) => (
+                <BlurFade client:load delay={0.7 + index * 0.1}>
+                  <div class="group relative overflow-hidden rounded-2xl bg-white p-8 shadow-sm ring-1 ring-gray-900/5 transition-all hover:shadow-lg">
+                    <div class="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_top_right,_theme(colors.primary.50),_transparent_40%)] opacity-0 transition-opacity group-hover:opacity-100" />
+
+                    <div class="flex items-start gap-4">
+                      <div class="flex h-16 w-16 flex-shrink-0 items-center justify-center rounded-xl bg-primary/10">
+                        <svg
+                          class="h-8 w-8 text-primary"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor"
+                        >
+                          <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d={member.icon}
+                          />
+                        </svg>
+                      </div>
+
+                      <div class="flex-1">
+                        <h3 class="text-xl font-semibold text-gray-900">{member.name}</h3>
+                        <p class="mt-1 text-sm font-medium text-primary">{member.role}</p>
+                        <p class="mt-2 text-sm text-gray-600">{member.credentials}</p>
+                        <p class="mt-1 text-sm text-gray-600">{member.experience}</p>
+
+                        <div class="mt-4 flex flex-wrap gap-2">
+                          {member.specialties.map((specialty) => (
+                            <span class="inline-flex items-center rounded-full bg-primary/5 px-3 py-1 text-xs font-medium text-primary">
+                              {specialty}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </BlurFade>
+              ))
+            }
+          </div>
+        </div>
+      </BlurFade>
+    </section>
+
+    <!-- CTA Section -->
+    <section id="contact" class="bg-white py-24 sm:py-32">
+      <BlurFade client:load delay={0.8}>
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div class="relative mx-auto max-w-2xl rounded-3xl bg-primary px-8 py-16 text-center">
+            <div
+              class="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_top_right,_theme(colors.primary.400),_transparent_40%),radial-gradient(circle_at_bottom_left,_theme(colors.primary.800),_transparent_40%)] opacity-20"
+            >
+            </div>
+            <h2 class="text-2xl font-semibold text-white">Ready to Start Your Concrete Project?</h2>
+            <p class="mt-4 text-lg text-white/80">
+              Contact us today for a free consultation and let's create durable, beautiful concrete
+              solutions for your property.
+            </p>
+            <div class="mt-8 flex justify-center gap-4">
+              <a
+                href="/contact"
+                class="rounded-xl bg-white px-8 py-4 text-base font-semibold text-primary shadow-sm transition-colors hover:bg-white/90 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-primary"
+              >
+                Schedule Consultation
+              </a>
+            </div>
+          </div>
+        </div>
+      </BlurFade>
+    </section>
+  </main>
+  <Footer />
+</Layout>
+

@@ -1,0 +1,452 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Navbar from "../../components/Navbar.astro";
+import Footer from "../../components/Footer.astro";
+import BlurFade from "../../components/magicui/blur-fade";
+import Accordion from "../../components/ui/Accordion";
+
+// SEO metadata optimized for package security services
+const title = "Package Security Solutions | Gulf Builders";
+const description =
+  "Gulf Builders provides comprehensive package security solutions to protect deliveries at residential and commercial properties. Our secure package lockers, drop boxes, and smart delivery systems prevent theft and ensure your parcels remain safe.";
+const keywords =
+  "package security, parcel protection, package lockers, delivery security, smart package boxes, package theft prevention, Toronto package security, secure deliveries";
+
+// Enhanced structured data with more details
+const structuredData = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  name: "Package Security Solutions",
+  provider: {
+    "@type": "Organization",
+    name: "Gulf Builders",
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: "70 University Ave",
+      addressLocality: "Toronto",
+      addressRegion: "ON",
+      postalCode: "M5J 2M4",
+      addressCountry: "CA",
+    },
+    telephone: "+1 (647) 123-4567",
+  },
+  description: description,
+  serviceType: "Package Security",
+};
+
+// Team members for authority and trust signals
+const teamMembers = [
+  {
+    name: "Nathan Reed",
+    role: "Package Security Specialist",
+    credentials: "Certified Security Professional (CSP)",
+    experience: "10+ years designing secure package delivery solutions for properties of all sizes",
+    specialties: ["Smart Lockers", "Access Control Systems", "Security Integration"],
+    icon: "M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z",
+  },
+  {
+    name: "Olivia Patel",
+    role: "Smart Home Integration Expert",
+    credentials: "CEDIA Certified Technician",
+    experience: "8+ years specializing in smart delivery systems and video monitoring integration",
+    specialties: ["Delivery Monitoring", "Smart Home Integration", "Mobile Notifications"],
+    icon: "M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z",
+  },
+];
+
+// Service features with icons
+const serviceFeatures = [
+  {
+    title: "Secure Package Lockers",
+    description: "Durable, weather-resistant lockers with smart access control for safe deliveries",
+    icon: "M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z",
+  },
+  {
+    title: "Video Monitoring",
+    description: "Real-time video surveillance with motion detection and delivery notifications",
+    icon: "M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z",
+  },
+  {
+    title: "Smart Integration",
+    description: "Seamless integration with existing home automation and security systems",
+    icon: "M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z",
+  },
+  {
+    title: "Custom Solutions",
+    description: "Tailored package security designs to match your property's style and needs",
+    icon: "M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065z",
+  },
+];
+
+// Project process steps
+const processSteps = [
+  {
+    step: "01",
+    title: "Security Assessment",
+    description:
+      "Evaluation of your property layout, delivery patterns, and security requirements.",
+    icon: "M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01",
+  },
+  {
+    step: "02",
+    title: "Solution Design",
+    description:
+      "Creation of a customized package security plan with appropriate hardware and systems.",
+    icon: "M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z",
+  },
+  {
+    step: "03",
+    title: "Professional Installation",
+    description:
+      "Expert installation of security hardware, wiring, and integration with existing systems.",
+    icon: "M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01",
+  },
+  {
+    step: "04",
+    title: "System Configuration",
+    description:
+      "Setup of access protocols, user accounts, notification systems, and mobile app integration.",
+    icon: "M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z",
+  },
+];
+
+// FAQs about package security
+const faqs = [
+  {
+    question: "What package security solutions do you offer?",
+    answer:
+      "We offer a comprehensive range of package security solutions including secure package lockers with electronic access, smart package boxes with real-time notifications, video doorbell integration, package delivery zones with surveillance, and custom built-in delivery receptacles. Our solutions can be standalone or integrated with your existing home security and automation systems to provide seamless protection for your deliveries.",
+  },
+  {
+    question: "How do secure package lockers work?",
+    answer:
+      "Our secure package lockers feature a robust, weather-resistant design with smart access control. Delivery personnel can place packages in the locker using a one-time access code, mobile app, or keypad. Once the package is secured, you receive a notification on your smartphone. You can then retrieve your package using your personal access code, key fob, or mobile app. The system maintains a log of all deliveries and access events for security tracking.",
+  },
+  {
+    question: "Can package security systems be integrated with my existing home automation?",
+    answer:
+      "Yes, our package security solutions are designed to integrate seamlessly with most popular home automation and security systems including Ring, Nest, SmartThings, Control4, and others. This integration allows for unified control through your existing smart home app, synchronized notifications, and the ability to incorporate package security into automated routines. For properties without existing automation, we provide standalone solutions with dedicated mobile apps.",
+  },
+  {
+    question: "What is the typical installation process and timeline?",
+    answer:
+      "The installation process begins with a property assessment and customized design plan. For standard package lockers or boxes, installation typically takes 1-2 days and includes secure mounting, power connection (if applicable), and system configuration. More complex integrated solutions may take 2-5 days depending on the level of integration and any custom construction required. We handle all aspects of installation including any necessary electrical work, with minimal disruption to your property.",
+  },
+  {
+    question: "Are your package security solutions suitable for multi-family properties?",
+    answer:
+      "Absolutely. We specialize in package security solutions for properties of all sizes, including multi-family buildings. For these properties, we offer centralized package locker systems with individual secure compartments, building lobby solutions with package rooms and surveillance, and integrated access control systems. These solutions can accommodate high delivery volumes while maintaining security and providing convenient access for residents.",
+  },
+];
+---
+
+<Layout>
+  <head>
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="keywords" content={keywords} />
+    <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
+  </head>
+
+  <Navbar />
+  <main class="relative" role="main" aria-labelledby="main-heading">
+    <!-- Hero Section -->
+    <section
+      class="relative overflow-hidden bg-white py-32 sm:py-40"
+      aria-labelledby="hero-heading"
+    >
+      <BlurFade client:load delay={0.2}>
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div class="grid min-h-[70vh] gap-12 lg:grid-cols-2 lg:gap-8">
+            <div class="flex flex-col justify-center">
+              <h1
+                id="main-heading"
+                class="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl"
+              >
+                Package Security Solutions
+              </h1>
+              <p class="mt-6 text-lg leading-8 text-gray-600">
+                Protect your deliveries with our innovative package security systems. From smart
+                lockers to video monitoring, we create customized solutions to ensure your packages
+                remain safe until you retrieve them.
+              </p>
+              <div class="mt-8 flex gap-4">
+                <a
+                  href="#contact"
+                  class="rounded-xl bg-primary px-8 py-4 text-base font-semibold text-white shadow-sm hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
+                >
+                  Secure Your Deliveries
+                </a>
+                <a
+                  href="#process"
+                  class="rounded-xl bg-gray-50 px-8 py-4 text-base font-semibold text-gray-900 shadow-sm hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-300"
+                >
+                  Learn More
+                </a>
+              </div>
+            </div>
+            <div class="relative flex items-center">
+              <div class="aspect-[4/3] overflow-hidden rounded-2xl bg-gray-50">
+                <img
+                  src="/images/package-security-hero.jpg"
+                  alt="Package security solutions by Gulf Builders"
+                  class="h-full w-full object-cover"
+                  width="800"
+                  height="600"
+                  loading="eager"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </BlurFade>
+    </section>
+
+    <!-- Features Section -->
+    <section class="bg-gray-50 py-24 sm:py-32">
+      <BlurFade client:load delay={0.3}>
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div class="mx-auto max-w-2xl text-center">
+            <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+              Comprehensive Package Protection
+            </h2>
+            <p class="mt-6 text-lg leading-8 text-gray-600">
+              From smart lockers to surveillance systems, we provide complete package security
+              solutions for residential and commercial properties.
+            </p>
+          </div>
+          <div class="mt-16 grid gap-12 sm:grid-cols-2 lg:grid-cols-4">
+            {
+              serviceFeatures.map((feature, index) => (
+                <BlurFade client:load delay={0.4 + index * 0.1}>
+                  <div class="relative">
+                    <div class="mb-6 flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10">
+                      <svg
+                        class="h-6 w-6 text-primary"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d={feature.icon}
+                        />
+                      </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900">{feature.title}</h3>
+                    <p class="mt-2 text-base text-gray-600">{feature.description}</p>
+                  </div>
+                </BlurFade>
+              ))
+            }
+          </div>
+        </div>
+      </BlurFade>
+    </section>
+
+    <!-- Process Section -->
+    <section id="process" class="relative bg-white py-24 sm:py-32">
+      <div class="absolute inset-0 -z-10">
+        <div class="absolute inset-y-0 left-0 -z-10 w-full overflow-hidden bg-gray-50">
+          <div class="absolute -left-[40%] top-0 h-[1000px] w-[80%] -rotate-12 bg-white"></div>
+        </div>
+      </div>
+
+      <BlurFade client:load delay={0.4}>
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div class="mx-auto max-w-2xl text-center">
+            <h2
+              class="bg-gradient-to-r from-gray-900 to-gray-600 bg-clip-text text-3xl font-bold tracking-tight text-transparent sm:text-4xl"
+            >
+              Our Implementation Process
+            </h2>
+            <p class="mt-6 text-lg leading-8 text-gray-600">
+              A systematic approach to create secure, reliable package protection customized for
+              your property.
+            </p>
+          </div>
+
+          <div class="mt-16 lg:mt-24">
+            <div class="relative">
+              <div
+                class="absolute left-1/2 top-0 hidden h-full w-0.5 -translate-x-1/2 bg-gray-200 lg:block"
+              >
+              </div>
+              <div class="space-y-16 lg:space-y-32">
+                {
+                  processSteps.map((step, index) => (
+                    <BlurFade client:load delay={0.5 + index * 0.1}>
+                      <div
+                        class={`relative flex flex-col gap-8 lg:flex-row ${index % 2 === 1 ? "lg:flex-row-reverse" : ""}`}
+                      >
+                        <div class="absolute left-1/2 top-0 hidden h-6 w-6 -translate-x-1/2 lg:block">
+                          <div class="h-full w-full rounded-full border-4 border-white bg-primary shadow-lg" />
+                        </div>
+                        <div class="flex-1 lg:w-1/2">
+                          <div class="group relative rounded-2xl bg-white p-8 shadow-sm ring-1 ring-gray-900/5 transition-all hover:shadow-lg">
+                            <div class="mb-6 flex items-center gap-4">
+                              <div class="flex h-14 w-14 items-center justify-center rounded-xl bg-primary text-xl font-bold text-white shadow-sm">
+                                {step.step}
+                              </div>
+                              <div class="flex h-14 w-14 items-center justify-center rounded-xl bg-primary/10">
+                                <svg
+                                  class="h-6 w-6 text-primary"
+                                  fill="none"
+                                  viewBox="0 0 24 24"
+                                  stroke="currentColor"
+                                >
+                                  <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d={step.icon}
+                                  />
+                                </svg>
+                              </div>
+                            </div>
+                            <h3 class="text-xl font-semibold text-gray-900">{step.title}</h3>
+                            <p class="mt-2 text-base leading-relaxed text-gray-600">
+                              {step.description}
+                            </p>
+                          </div>
+                        </div>
+                        <div class="hidden lg:block lg:w-1/2" />
+                      </div>
+                    </BlurFade>
+                  ))
+                }
+              </div>
+            </div>
+          </div>
+        </div>
+      </BlurFade>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="bg-gray-50 py-24 sm:py-32" aria-labelledby="faq-heading">
+      <BlurFade client:load delay={0.7}>
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div class="mx-auto max-w-2xl text-center">
+            <h2
+              id="faq-heading"
+              class="bg-gradient-to-r from-gray-900 to-gray-600 bg-clip-text text-3xl font-bold tracking-tight text-transparent sm:text-4xl"
+            >
+              Frequently Asked Questions
+            </h2>
+            <p class="mt-6 text-lg leading-8 text-gray-600">
+              Find answers to common questions about our package security solutions.
+            </p>
+          </div>
+
+          <div class="mt-16 grid grid-cols-1 gap-2 space-y-4">
+            {
+              faqs.map((faq, index) => (
+                <BlurFade client:load delay={0.8 + index * 0.1}>
+                  <Accordion client:load title={faq.question}>
+                    <div class="text-base leading-relaxed text-gray-600">
+                      <p>{faq.answer}</p>
+                    </div>
+                  </Accordion>
+                </BlurFade>
+              ))
+            }
+          </div>
+        </div>
+      </BlurFade>
+    </section>
+
+    <!-- Team Section -->
+    <section class="bg-white py-24 sm:py-32">
+      <BlurFade client:load delay={0.6}>
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div class="mx-auto max-w-2xl text-center">
+            <h2
+              class="bg-gradient-to-r from-gray-900 to-gray-600 bg-clip-text text-3xl font-bold tracking-tight text-transparent sm:text-4xl"
+            >
+              Meet Our Security Experts
+            </h2>
+            <p class="mt-6 text-lg leading-8 text-gray-600">
+              Our team of specialists brings years of experience in security systems and smart
+              integration.
+            </p>
+          </div>
+          <div class="mt-16 grid gap-8 sm:grid-cols-2">
+            {
+              teamMembers.map((member, index) => (
+                <BlurFade client:load delay={0.7 + index * 0.1}>
+                  <div class="group relative overflow-hidden rounded-2xl bg-white p-8 shadow-sm ring-1 ring-gray-900/5 transition-all hover:shadow-lg">
+                    <div class="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_top_right,_theme(colors.primary.50),_transparent_40%)] opacity-0 transition-opacity group-hover:opacity-100" />
+
+                    <div class="flex items-start gap-4">
+                      <div class="flex h-16 w-16 flex-shrink-0 items-center justify-center rounded-xl bg-primary/10">
+                        <svg
+                          class="h-8 w-8 text-primary"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor"
+                        >
+                          <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d={member.icon}
+                          />
+                        </svg>
+                      </div>
+
+                      <div class="flex-1">
+                        <h3 class="text-xl font-semibold text-gray-900">{member.name}</h3>
+                        <p class="mt-1 text-sm font-medium text-primary">{member.role}</p>
+                        <p class="mt-2 text-sm text-gray-600">{member.credentials}</p>
+                        <p class="mt-1 text-sm text-gray-600">{member.experience}</p>
+
+                        <div class="mt-4 flex flex-wrap gap-2">
+                          {member.specialties.map((specialty) => (
+                            <span class="inline-flex items-center rounded-full bg-primary/5 px-3 py-1 text-xs font-medium text-primary">
+                              {specialty}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </BlurFade>
+              ))
+            }
+          </div>
+        </div>
+      </BlurFade>
+    </section>
+
+    <!-- CTA Section -->
+    <section id="contact" class="bg-white py-24 sm:py-32">
+      <BlurFade client:load delay={0.8}>
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div class="relative mx-auto max-w-2xl rounded-3xl bg-primary px-8 py-16 text-center">
+            <div
+              class="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_top_right,_theme(colors.primary.400),_transparent_40%),radial-gradient(circle_at_bottom_left,_theme(colors.primary.800),_transparent_40%)] opacity-20"
+            >
+            </div>
+            <h2 class="text-2xl font-semibold text-white">Ready to Protect Your Deliveries?</h2>
+            <p class="mt-4 text-lg text-white/80">
+              Contact us today for a free consultation and let's create a secure package delivery
+              solution for your property.
+            </p>
+            <div class="mt-8 flex justify-center gap-4">
+              <a
+                href="/contact"
+                class="rounded-xl bg-white px-8 py-4 text-base font-semibold text-primary shadow-sm transition-colors hover:bg-white/90 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-primary"
+              >
+                Schedule Consultation
+              </a>
+            </div>
+          </div>
+        </div>
+      </BlurFade>
+    </section>
+  </main>
+  <Footer />
+</Layout>
+

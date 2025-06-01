@@ -1,0 +1,452 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Navbar from "../../components/Navbar.astro";
+import Footer from "../../components/Footer.astro";
+import BlurFade from "../../components/magicui/blur-fade";
+import Accordion from "../../components/ui/Accordion";
+
+// SEO metadata optimized for renovation services
+const title = "Expert Home Renovation Services | Gulf Builders";
+const description =
+  "Gulf Builders delivers premium home renovation services for kitchens, bathrooms, basements, and whole-home transformations. Our experienced team handles projects from design to completion with quality craftsmanship and exceptional attention to detail.";
+const keywords =
+  "home renovations, kitchen remodeling, bathroom renovation, basement finishing, home remodeling, Toronto renovations, residential renovations, whole home renovation";
+
+// Enhanced structured data with more details
+const structuredData = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  name: "Expert Home Renovation Services",
+  provider: {
+    "@type": "Organization",
+    name: "Gulf Builders",
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: "70 University Ave",
+      addressLocality: "Toronto",
+      addressRegion: "ON",
+      postalCode: "M5J 2M4",
+      addressCountry: "CA",
+    },
+    telephone: "+1 (647) 123-4567",
+  },
+  description: description,
+  serviceType: "Home Renovation",
+};
+
+// Team members for authority and trust signals
+const teamMembers = [
+  {
+    name: "David Chen",
+    role: "Senior Renovation Project Manager",
+    credentials: "Licensed General Contractor",
+    experience: "18+ years managing residential and commercial renovation projects",
+    specialties: ["Kitchen Renovations", "Whole Home Remodeling", "Structural Modifications"],
+    icon: "M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6",
+  },
+  {
+    name: "Rebecca Williams",
+    role: "Interior Designer & Space Planner",
+    credentials: "NCIDQ Certified Interior Designer",
+    experience: "12+ years creating functional, beautiful living spaces through renovation design",
+    specialties: ["Space Optimization", "Material Selection", "Custom Design Solutions"],
+    icon: "M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z",
+  },
+];
+
+// Service features with icons
+const serviceFeatures = [
+  {
+    title: "Kitchen Renovations",
+    description: "Custom kitchen transformations with premium cabinetry, countertops, and fixtures",
+    icon: "M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10",
+  },
+  {
+    title: "Bathroom Remodels",
+    description: "Luxurious bathroom upgrades with modern fixtures, tile work, and smart features",
+    icon: "M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253",
+  },
+  {
+    title: "Basement Finishing",
+    description: "Transform underutilized basements into functional, beautiful living spaces",
+    icon: "M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4",
+  },
+  {
+    title: "Whole Home Renovations",
+    description: "Comprehensive remodeling services to transform your entire living space",
+    icon: "M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6",
+  },
+];
+
+// Project process steps
+const processSteps = [
+  {
+    step: "01",
+    title: "Consultation & Design",
+    description:
+      "In-depth discussion of your vision, needs assessment, and creation of detailed renovation plans.",
+    icon: "M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z",
+  },
+  {
+    step: "02",
+    title: "Planning & Preparation",
+    description:
+      "Detailed project scoping, material selection, permits acquisition, and scheduling coordination.",
+    icon: "M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01",
+  },
+  {
+    step: "03",
+    title: "Professional Execution",
+    description:
+      "Skilled demolition, construction, installation, and finishing by expert tradespeople.",
+    icon: "M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01",
+  },
+  {
+    step: "04",
+    title: "Quality Inspection & Handover",
+    description:
+      "Thorough quality checks, final adjustments, and complete project handover with support documentation.",
+    icon: "M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z",
+  },
+];
+
+// FAQs about renovations
+const faqs = [
+  {
+    question: "What types of renovation projects do you handle?",
+    answer:
+      "We manage a comprehensive range of renovation projects including kitchen renovations, bathroom remodels, basement finishing, whole home renovations, room additions, open concept conversions, aging-in-place modifications, and historic home restorations. Our experienced team can handle projects of varying sizes and complexities, from simple updates to complete home transformations. We specialize in both cosmetic renovations and structural remodeling that requires architectural changes and permit approvals.",
+  },
+  {
+    question: "How long does a typical renovation project take?",
+    answer:
+      "Project timelines vary significantly based on scope, complexity, and size. As a general guideline: bathroom renovations typically take 3-6 weeks, kitchen renovations range from 6-12 weeks, basement finishing projects take 4-8 weeks, and whole home renovations can take 3-8 months or more. Factors that affect timelines include structural changes, permit requirements, material availability, and unforeseen conditions discovered during demolition. We provide detailed timeline estimates after assessing your specific project requirements during the planning phase.",
+  },
+  {
+    question: "Do you handle all aspects of the renovation process?",
+    answer:
+      "Yes, we provide end-to-end renovation services, managing every aspect of your project from initial design through completion. This includes conceptual design, detailed planning, material selection, permit acquisition, demolition, construction, specialized trade coordination (electrical, plumbing, HVAC), installation of fixtures and finishes, quality control, and final cleanup. Our turnkey approach means you have a single point of contact throughout the entire renovation process, eliminating the need to coordinate multiple contractors and ensuring a cohesive, well-executed project.",
+  },
+  {
+    question: "Can I stay in my home during renovations?",
+    answer:
+      "Whether you can remain in your home during renovations depends on the project scope and which areas are being renovated. For kitchen renovations, many homeowners choose to stay and set up temporary cooking arrangements. Bathroom renovations are manageable if you have access to another bathroom. Whole home renovations or projects involving extensive demolition, electrical work, or plumbing changes often require temporary relocation. We discuss living arrangements during the planning phase and implement strategies to minimize disruption, including dust containment systems, dedicated work zones, and careful scheduling of utilities interruptions if you choose to remain in the home.",
+  },
+  {
+    question: "What sets your renovation services apart from others?",
+    answer:
+      "Our renovation services stand out through our comprehensive approach combining design expertise, quality craftsmanship, and project management excellence. We emphasize thorough planning before construction begins, transparent communication throughout the process, and meticulous attention to detail in execution. Our team includes certified designers who create functional, beautiful spaces, skilled tradespeople with specialized expertise, and experienced project managers who ensure smooth execution. We use premium materials and innovative building techniques while adhering to strict quality standards. Additionally, our established relationships with suppliers and specialized subcontractors allow us to offer competitive pricing without compromising quality.",
+  },
+];
+---
+
+<Layout>
+  <head>
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="keywords" content={keywords} />
+    <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
+  </head>
+
+  <Navbar />
+  <main class="relative" role="main" aria-labelledby="main-heading">
+    <!-- Hero Section -->
+    <section
+      class="relative overflow-hidden bg-white py-32 sm:py-40"
+      aria-labelledby="hero-heading"
+    >
+      <BlurFade client:load delay={0.2}>
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div class="grid min-h-[70vh] gap-12 lg:grid-cols-2 lg:gap-8">
+            <div class="flex flex-col justify-center">
+              <h1
+                id="main-heading"
+                class="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl"
+              >
+                Expert Home Renovation Services
+              </h1>
+              <p class="mt-6 text-lg leading-8 text-gray-600">
+                Transform your living spaces with our comprehensive renovation services. From
+                kitchens and bathrooms to whole-home transformations, we bring quality craftsmanship
+                and innovative design to every project.
+              </p>
+              <div class="mt-8 flex gap-4">
+                <a
+                  href="#contact"
+                  class="rounded-xl bg-primary px-8 py-4 text-base font-semibold text-white shadow-sm hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
+                >
+                  Start Your Project
+                </a>
+                <a
+                  href="#process"
+                  class="rounded-xl bg-gray-50 px-8 py-4 text-base font-semibold text-gray-900 shadow-sm hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-300"
+                >
+                  Learn More
+                </a>
+              </div>
+            </div>
+            <div class="relative flex items-center">
+              <div class="aspect-[4/3] overflow-hidden rounded-2xl bg-gray-50">
+                <img
+                  src="/images/renovations-hero.jpg"
+                  alt="Expert home renovation services by Gulf Builders"
+                  class="h-full w-full object-cover"
+                  width="800"
+                  height="600"
+                  loading="eager"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </BlurFade>
+    </section>
+
+    <!-- Features Section -->
+    <section class="bg-gray-50 py-24 sm:py-32">
+      <BlurFade client:load delay={0.3}>
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div class="mx-auto max-w-2xl text-center">
+            <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+              Comprehensive Renovation Solutions
+            </h2>
+            <p class="mt-6 text-lg leading-8 text-gray-600">
+              From kitchen transformations to whole-home remodels, we provide complete renovation
+              services for every space and need.
+            </p>
+          </div>
+          <div class="mt-16 grid gap-12 sm:grid-cols-2 lg:grid-cols-4">
+            {
+              serviceFeatures.map((feature, index) => (
+                <BlurFade client:load delay={0.4 + index * 0.1}>
+                  <div class="relative">
+                    <div class="mb-6 flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10">
+                      <svg
+                        class="h-6 w-6 text-primary"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d={feature.icon}
+                        />
+                      </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900">{feature.title}</h3>
+                    <p class="mt-2 text-base text-gray-600">{feature.description}</p>
+                  </div>
+                </BlurFade>
+              ))
+            }
+          </div>
+        </div>
+      </BlurFade>
+    </section>
+
+    <!-- Process Section -->
+    <section id="process" class="relative bg-white py-24 sm:py-32">
+      <div class="absolute inset-0 -z-10">
+        <div class="absolute inset-y-0 left-0 -z-10 w-full overflow-hidden bg-gray-50">
+          <div class="absolute -left-[40%] top-0 h-[1000px] w-[80%] -rotate-12 bg-white"></div>
+        </div>
+      </div>
+
+      <BlurFade client:load delay={0.4}>
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div class="mx-auto max-w-2xl text-center">
+            <h2
+              class="bg-gradient-to-r from-gray-900 to-gray-600 bg-clip-text text-3xl font-bold tracking-tight text-transparent sm:text-4xl"
+            >
+              Our Renovation Process
+            </h2>
+            <p class="mt-6 text-lg leading-8 text-gray-600">
+              A methodical approach that ensures successful renovation projects delivered on time
+              and on budget.
+            </p>
+          </div>
+
+          <div class="mt-16 lg:mt-24">
+            <div class="relative">
+              <div
+                class="absolute left-1/2 top-0 hidden h-full w-0.5 -translate-x-1/2 bg-gray-200 lg:block"
+              >
+              </div>
+              <div class="space-y-16 lg:space-y-32">
+                {
+                  processSteps.map((step, index) => (
+                    <BlurFade client:load delay={0.5 + index * 0.1}>
+                      <div
+                        class={`relative flex flex-col gap-8 lg:flex-row ${index % 2 === 1 ? "lg:flex-row-reverse" : ""}`}
+                      >
+                        <div class="absolute left-1/2 top-0 hidden h-6 w-6 -translate-x-1/2 lg:block">
+                          <div class="h-full w-full rounded-full border-4 border-white bg-primary shadow-lg" />
+                        </div>
+                        <div class="flex-1 lg:w-1/2">
+                          <div class="group relative rounded-2xl bg-white p-8 shadow-sm ring-1 ring-gray-900/5 transition-all hover:shadow-lg">
+                            <div class="mb-6 flex items-center gap-4">
+                              <div class="flex h-14 w-14 items-center justify-center rounded-xl bg-primary text-xl font-bold text-white shadow-sm">
+                                {step.step}
+                              </div>
+                              <div class="flex h-14 w-14 items-center justify-center rounded-xl bg-primary/10">
+                                <svg
+                                  class="h-6 w-6 text-primary"
+                                  fill="none"
+                                  viewBox="0 0 24 24"
+                                  stroke="currentColor"
+                                >
+                                  <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d={step.icon}
+                                  />
+                                </svg>
+                              </div>
+                            </div>
+                            <h3 class="text-xl font-semibold text-gray-900">{step.title}</h3>
+                            <p class="mt-2 text-base leading-relaxed text-gray-600">
+                              {step.description}
+                            </p>
+                          </div>
+                        </div>
+                        <div class="hidden lg:block lg:w-1/2" />
+                      </div>
+                    </BlurFade>
+                  ))
+                }
+              </div>
+            </div>
+          </div>
+        </div>
+      </BlurFade>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="bg-gray-50 py-24 sm:py-32" aria-labelledby="faq-heading">
+      <BlurFade client:load delay={0.7}>
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div class="mx-auto max-w-2xl text-center">
+            <h2
+              id="faq-heading"
+              class="bg-gradient-to-r from-gray-900 to-gray-600 bg-clip-text text-3xl font-bold tracking-tight text-transparent sm:text-4xl"
+            >
+              Frequently Asked Questions
+            </h2>
+            <p class="mt-6 text-lg leading-8 text-gray-600">
+              Find answers to common questions about our renovation services.
+            </p>
+          </div>
+
+          <div class="mt-16 grid grid-cols-1 gap-2 space-y-4">
+            {
+              faqs.map((faq, index) => (
+                <BlurFade client:load delay={0.8 + index * 0.1}>
+                  <Accordion client:load title={faq.question}>
+                    <div class="text-base leading-relaxed text-gray-600">
+                      <p>{faq.answer}</p>
+                    </div>
+                  </Accordion>
+                </BlurFade>
+              ))
+            }
+          </div>
+        </div>
+      </BlurFade>
+    </section>
+
+    <!-- Team Section -->
+    <section class="bg-white py-24 sm:py-32">
+      <BlurFade client:load delay={0.6}>
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div class="mx-auto max-w-2xl text-center">
+            <h2
+              class="bg-gradient-to-r from-gray-900 to-gray-600 bg-clip-text text-3xl font-bold tracking-tight text-transparent sm:text-4xl"
+            >
+              Meet Our Renovation Experts
+            </h2>
+            <p class="mt-6 text-lg leading-8 text-gray-600">
+              Our team of specialists brings years of experience and technical expertise to every
+              renovation project.
+            </p>
+          </div>
+          <div class="mt-16 grid gap-8 sm:grid-cols-2">
+            {
+              teamMembers.map((member, index) => (
+                <BlurFade client:load delay={0.7 + index * 0.1}>
+                  <div class="group relative overflow-hidden rounded-2xl bg-white p-8 shadow-sm ring-1 ring-gray-900/5 transition-all hover:shadow-lg">
+                    <div class="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_top_right,_theme(colors.primary.50),_transparent_40%)] opacity-0 transition-opacity group-hover:opacity-100" />
+
+                    <div class="flex items-start gap-4">
+                      <div class="flex h-16 w-16 flex-shrink-0 items-center justify-center rounded-xl bg-primary/10">
+                        <svg
+                          class="h-8 w-8 text-primary"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor"
+                        >
+                          <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d={member.icon}
+                          />
+                        </svg>
+                      </div>
+
+                      <div class="flex-1">
+                        <h3 class="text-xl font-semibold text-gray-900">{member.name}</h3>
+                        <p class="mt-1 text-sm font-medium text-primary">{member.role}</p>
+                        <p class="mt-2 text-sm text-gray-600">{member.credentials}</p>
+                        <p class="mt-1 text-sm text-gray-600">{member.experience}</p>
+
+                        <div class="mt-4 flex flex-wrap gap-2">
+                          {member.specialties.map((specialty) => (
+                            <span class="inline-flex items-center rounded-full bg-primary/5 px-3 py-1 text-xs font-medium text-primary">
+                              {specialty}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </BlurFade>
+              ))
+            }
+          </div>
+        </div>
+      </BlurFade>
+    </section>
+
+    <!-- CTA Section -->
+    <section id="contact" class="bg-white py-24 sm:py-32">
+      <BlurFade client:load delay={0.8}>
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div class="relative mx-auto max-w-2xl rounded-3xl bg-primary px-8 py-16 text-center">
+            <div
+              class="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_top_right,_theme(colors.primary.400),_transparent_40%),radial-gradient(circle_at_bottom_left,_theme(colors.primary.800),_transparent_40%)] opacity-20"
+            >
+            </div>
+            <h2 class="text-2xl font-semibold text-white">Ready to Transform Your Home?</h2>
+            <p class="mt-4 text-lg text-white/80">
+              Contact us today for a free consultation and let's bring your renovation vision to
+              life with our expert team.
+            </p>
+            <div class="mt-8 flex justify-center gap-4">
+              <a
+                href="/contact"
+                class="rounded-xl bg-white px-8 py-4 text-base font-semibold text-primary shadow-sm transition-colors hover:bg-white/90 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-primary"
+              >
+                Schedule Consultation
+              </a>
+            </div>
+          </div>
+        </div>
+      </BlurFade>
+    </section>
+  </main>
+  <Footer />
+</Layout>
+
